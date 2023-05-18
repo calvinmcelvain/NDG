@@ -1,0 +1,106 @@
+{{ block content }}
+<div>
+  <p>
+      1) If I am assigned the role of player 1 at the beginning of Stage 1, I will be a Player 1 for all rounds of Stage 1.
+  </p>
+  <div>
+      {{ if player.qrole == True }}
+  </div>
+  <p><b>
+          You answered "Yes", this is <span style="color: green">CORRECT</span>
+  </b></p>
+  {{ else }}
+  <p><b>
+        You answered "No", this is <span style="color: red">INCORRECT</span>, the role you are assigned at the start of Stage 1 will stay the same for all round in Stage 1
+  </b></p>
+  {{ endif }}
+</div>
+<div>
+  <p>
+      2) If I am assigned the role of Player 2 at the beginning of Stage 1, in each round I will be randomly matched with a different person in the role of Player 1.
+  </p>
+  <div>
+      {{ if player.qrandom == True }}
+  </div>
+  <p><b>
+        You answered "Yes", this is <span style="color: green">CORRECT</span>
+  </b></p>
+  {{ else }}
+  <p><b>
+        You answered "No", this is <span style="color: red">INCORRECT</span>, the role you are assigned at the start of Stage 1 will stay the same for all round in Stage 1
+  </b></p>
+  {{ endif }}
+</div>
+<u><p>
+    Please refer to the payoff table on the bottom of this screen to answer these questions.
+</p></u>
+<div>
+  <p>
+      3) You are assigned the role of Player 1 at the beginning of Stage 1. If you choose A and the Player 2 matched with you chooses D, your payoff in ECUs is ___
+  </p>
+  <div>
+      {{ if player.qplayer1payoff == 0 }}
+  </div>
+  <p><b>
+        You answered {{ player.qplayer1payoff }}, this is <span style="color: green">CORRECT</span>, see cell highlighted in yellow
+  </b></p>
+  {{ else }}
+  <p><b>
+        You answered {{ player.qplayer1payoff }}, this is <span style="color: red">INCORRECT</span>, your payoff would be 0 (see cell highlighted in yellow)
+  </b></p>
+  {{ endif }}
+</div>
+<div>
+  <p>
+      4) You are assigned the role of Player 2 at the beginning of Stage 1. If you choose C and the Player 1 matched with you chooses B, the other person's payoff in ECUs is ___
+  </p>
+  <div>
+      {{ if player.qotherplayerpayoff == 0 }}
+  </div>
+  <p><b>
+        You answered {{ player.qotherplayerpayoff }}, this is <span style="color: green">CORRECT</span>, see cell highlighted in green
+  </b></p>
+  {{ else }}
+  <p><b>
+        You answered {{ player.qotherplayerpayoff }}, this is <span style="color: red">INCORRECT</span>, the other player's payoff would be 0 (see the cell highlighted in green)
+  </b></p>
+  {{ endif }}
+</div>
+<div class="form-group required">
+    <table align="center">
+        <tr>
+            <th colspan="3" rowspan="2" style="border: 0;"></th>
+            <th colspan="2" height="50px" style="color: blue; border: 0; text-align: center; font-size: 16px;">Player 2</th>
+        </tr>
+        <tr>
+            <th width="50px" style="border: 0; text-align: center; vertical-align: middle;">C</th>
+            <th width="50px" style="border: 0; text-align: center; vertical-align: middle;">D</th>
+        </tr>
+        <tr>
+            <th colspan="2" rowspan="2" width="100px" style="border: 0; color: red; text-align: center; vertical-align: middle; font-size: 16px;">Player 1</th>
+            <th width="50px" style="border: 0; text-align: center; vertical-align: middle;">A</th>
+            <td height="75px" width="100px" style="position: relative; border: 1px solid black; font-weight: bold; font-size: 20px;">
+                <span style="position: absolute; bottom: 0; left: 0; color: red;">200</span>
+                <span style="position: absolute; top: 0; right: 0; color: blue;">200</span>
+            </td>
+            <td height="75px" width="100px" style="position: relative; border: 1px solid black; font-weight: bold; font-size: 20px;" bgcolor="yellow">
+                <span style="position: absolute; bottom: 0; left: 0; color: red;">0</span>
+                <span style="position: absolute; top: 0; right: 0; color: blue;">300</span>
+            </td>
+        </tr>
+        <tr>
+            <th width="50px" style="border: 0; text-align: center; vertical-align: middle;">B</th>
+            <td height="75px" width="100px" style="position: relative; border: 1px solid black; font-weight: bold; font-size: 20px;" bgcolor="green">
+                <span style="position: absolute; bottom: 0; left: 0; color: red;">300</span>
+                <span style="position: absolute; top: 0; right: 0; color: blue;">0</span>
+            </td>
+            <td height="75px" width="100px" style="position: relative; border: 1px solid black; font-weight: bold; font-size: 20px;">
+                <span style="position: absolute; bottom: 0; left: 0; color: red;">100</span>
+                <span style="position: absolute; top: 0; right: 0; color: blue;">100</span>
+            </td>
+        </tr>
+    </table>
+</div>
+    {{ next_button }}
+
+{{ endblock }}
