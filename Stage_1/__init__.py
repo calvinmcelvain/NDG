@@ -32,8 +32,8 @@ class Player(BasePlayer):
     decision = models.StringField()
 
     # Practice Quiz Questions
-    qrole = models.BooleanField(label="1) If I am assigned the role of player 1 at the beginning of Stage 1, I will be a Player 1 for all rounds of Stage 1.")
-    qrandom = models.BooleanField(label="2) If I am assigned the role of Player 2 at the beginning of Stage 1, in each round I will be randomly matched with a different person in the role of Player 1.")
+    qrole = models.BooleanField(label="1) If I am assigned the role of player 1 at the beginning of Stage 1, I will be a Player 1 for all rounds of Stage 1.", choices=[True, False])
+    qrandom = models.BooleanField(label="2) If I am assigned the role of Player 2 at the beginning of Stage 1, in each round I will be randomly matched with a different person in the role of Player 1.", choices=[True, False])
     qplayer1payoff = models.IntegerField(label="3) You are assigned the role of Player 1 at the beginning of Stage 1. If you choose A and the Player 2 matched with you chooses D, your payoff in ECUs is ___", min=0, max=300)
     qotherplayerpayoff = models.IntegerField(label="4) You are assigned the role of Player 2 at the beginning of Stage 1. If you choose C and the Player 1 matched with you chooses B, the other person's payoff in ECUs is ___", min=0, max=300)
 
@@ -92,7 +92,9 @@ class PlayerResults(Page):
     def vars_for_template(player: Player):
         return dict(history=player.in_all_rounds())
 
-
+class Stage1End(Page):
+    def is_displayed(player: Player):
+        return Player.round_number == C.NUM_ROUNDS
 
 
 page_sequence = [Instructions, InstructionsQuiz, QuizResults, Decision_Players, ResultsWaitPage, PlayerResults]
