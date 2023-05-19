@@ -1,8 +1,11 @@
 {{ block title }}
 
-<header style="font-size: 30px;">Stage 1: Round {{ player.round_number }}</header>
-
-<p style="font-size: 41px;"> You are Player 1</p>
+<header style="font-size: 21px;">Stage 1: End of Round {{ player.round_number }}</header>
+{{ if player.role == C.Player1_ROLE }}
+<p style="font-size: 30px;" align="center"> You are <span style="color: red"> {{ player.role }} </span></p>
+{{ else }}
+<p style="font-size: 30px;" align="center"> You are <span style="color: blue"> {{ player.role }} </span></p>
+{{ endif }}
 
 {{ endblock }}
 
@@ -22,49 +25,90 @@
         });
     });
 </script>
-
-    <div class="form-group required">
-        <table align="center">
-            <tr>
-                <td colspan="3" ></td>
-                <th colspan="2" height="60px" style="text-align: center;"><u>Select a Option</u></th>
-            </tr>
-            <tr>
-                <th colspan="3" rowspan="2" style="border: 0;"></th>
-                <th colspan="2" height="50px" style="color: blue; border: 0; text-align: center; font-size: 16px;">Player 2</th>
-            </tr>
-            <tr>
-                <th style="border: 0; text-align: center; vertical-align: middle;">C</th>
-                <th style="border: 0; text-align: center; vertical-align: middle;">D</th>
-            </tr>
-            <tr>
-                <th colspan="2" rowspan="2" width="100px" style="border: 0; color: red; text-align: center; vertical-align: middle; font-size: 16px;">Player 1</th>
-                <td width="50px" ><input name="decision" min="A" max="A" type="radio" value="True" class="btn btn-primary btn-large" align="center" style="border: 0; font-weight: bold; display: inline-block;"><b> A</b></input></td>
-                <td id="top-left" height="75px" width="100px" style="position: relative; border: 1px solid black; font-weight: bold; font-size: 20px;">
-                    <span style="position: absolute; bottom: 0; left: 0; color: red;">{{C.payoff_AC}}</span>
-                    <span style="position: absolute; top: 0; right: 0; color: blue;">{{C.payoff_AC}}</span>
-                </td>
-                <td id="top-right" height="75px" width="100px" style="position: relative; border: 1px solid black; font-weight: bold; font-size: 20px;">
-                    <span style="position: absolute; bottom: 0; left: 0; color: red;">{{C.payoff_low}}</span>
-                    <span style="position: absolute; top: 0; right: 0; color: blue;">{{C.payoff_high}}</span>
-                </td>
-            </tr>
-            <tr>
-                <td width="50px" ><input name="AorB" type="radio" min="B" max="B" value="False" class="btn btn-primary btn-large" align="center" style="border: 0; font-weight: bold; display: inline-block;"><b> B</b></input></td>
-                <td id="bottom-left" height="75px" width="100px" style="position: relative; border: 1px solid black; font-weight: bold; font-size: 20px;">
-                    <span style="position: absolute; bottom: 0; left: 0; color: red;">{{C.payoff_high}}</span>
-                    <span style="position: absolute; top: 0; right: 0; color: blue;">{{C.payoff_low}}</span>
-                </td>
-                <td id="bottom-right" height="75px" width="100px" style="position: relative; border: 1px solid black; font-weight: bold; font-size: 20px;">
-                    <span style="position: absolute; bottom: 0; left: 0; color: red;">{{C.payoff_BD}}</span>
-                    <span style="position: absolute; top: 0; right: 0; color: blue;">{{C.payoff_BD}}</span>
-                </td>
-            </tr>
-        </table>
-    </div>
+{{ if player.role == C.Player1_ROLE }}
+<div>
+    <table align="center">
+        <tr>
+            <td colspan="3" ></td>
+            <th colspan="2" height="60px" style="text-align: center;"><u>Select a Option</u></th>
+        </tr>
+        <tr>
+            <th colspan="3" rowspan="2" style="border: 0;"></th>
+            <th colspan="2" height="50px" style="color: blue; border: 0; text-align: center; font-size: 16px;">Player 2</th>
+        </tr>
+        <tr>
+            <th style="border: 0; text-align: center; vertical-align: middle;">C</th>
+            <th style="border: 0; text-align: center; vertical-align: middle;">D</th>
+        </tr>
+        <tr>
+            <th colspan="2" rowspan="2" width="100px" style="border: 0; color: red; text-align: center; vertical-align: middle; font-size: 16px;">Player 1</th>
+            <td width="50px" ><input name="decision" type="radio" value="A" class="btn btn-primary btn-large" align="center" style="border: 0; font-weight: bold; display: inline-block;"><b> A</b></input></td>
+            <td height="75px" width="100px" style="position: relative; border: 1px solid black; font-weight: bold; font-size: 20px;">
+                <span style="position: absolute; bottom: 0; left: 0; color: red;">{{C.payoff_AC}}</span>
+                <span style="position: absolute; top: 0; right: 0; color: blue;">{{C.payoff_AC}}</span>
+            </td>
+            <td height="75px" width="100px" style="position: relative; border: 1px solid black; font-weight: bold; font-size: 20px;">
+                <span style="position: absolute; bottom: 0; left: 0; color: red;">{{C.payoff_low}}</span>
+                <span style="position: absolute; top: 0; right: 0; color: blue;">{{C.payoff_high}}</span>
+            </td>
+        </tr>
+        <tr>
+            <td width="50px" ><input name="decision" type="radio" value="B" class="btn btn-primary btn-large" align="center" style="border: 0; font-weight: bold; display: inline-block;"><b> B</b></input></td>
+            <td height="75px" width="100px" style="position: relative; border: 1px solid black; font-weight: bold; font-size: 20px;">
+                <span style="position: absolute; bottom: 0; left: 0; color: red;">{{C.payoff_high}}</span>
+                <span style="position: absolute; top: 0; right: 0; color: blue;">{{C.payoff_low}}</span>
+            </td>
+            <td height="75px" width="100px" style="position: relative; border: 1px solid black; font-weight: bold; font-size: 20px;">
+                <span style="position: absolute; bottom: 0; left: 0; color: red;">{{C.payoff_BD}}</span>
+                <span style="position: absolute; top: 0; right: 0; color: blue;">{{C.payoff_BD}}</span>
+            </td>
+        </tr>
+    </table>
+</div>
+{{ else }}
+<div>
+    <table align="center">
+        <tr>
+            <td colspan="3" ></td>
+            <th colspan="2" height="60px" style="text-align: center;"><u>Select a Option</u></th>
+        </tr>
+        <tr>
+            <th colspan="3" rowspan="2" style="border: 0;"></th>
+            <th colspan="2" height="50px" style="color: blue; border: 0; text-align: center; font-size: 16px;">Player 2</th>
+        </tr>
+        <tr>
+            <td width="50px" align="center" ><input name="decision" type="radio" value="C" class="btn btn-primary btn-large" style="border: 0; font-weight: bold; display: inline-block;"><b> C</b></input></td>
+            <td width="50px" align="center" ><input name="decision" type="radio" value="D" class="btn btn-primary btn-large" style="border: 0; font-weight: bold; display: inline-block;"><b> D</b></input></td>
+        </tr>
+        <tr>
+            <th colspan="2" rowspan="2" width="100px" style="border: 0; color: red; text-align: center; vertical-align: middle; font-size: 16px;">Player 1</th>
+            <th style="border: 0; text-align: center; vertical-align: middle;">A</th>
+            <td height="75px" width="100px" style="position: relative; border: 1px solid black; font-weight: bold; font-size: 20px;">
+                <span style="position: absolute; bottom: 0; left: 0; color: red;">{{C.payoff_AC}}</span>
+                <span style="position: absolute; top: 0; right: 0; color: blue;">{{C.payoff_AC}}</span>
+            </td>
+            <td height="75px" width="100px" style="position: relative; border: 1px solid black; font-weight: bold; font-size: 20px;">
+                <span style="position: absolute; bottom: 0; left: 0; color: red;">{{C.payoff_low}}</span>
+                <span style="position: absolute; top: 0; right: 0; color: blue;">{{C.payoff_high}}</span>
+            </td>
+        </tr>
+        <tr>
+            <th style="border: 0; text-align: center; vertical-align: middle;">B</th>
+            <td height="75px" width="100px" style="position: relative; border: 1px solid black; font-weight: bold; font-size: 20px;">
+                <span style="position: absolute; bottom: 0; left: 0; color: red;">{{C.payoff_high}}</span>
+                <span style="position: absolute; top: 0; right: 0; color: blue;">{{C.payoff_low}}</span>
+            </td>
+            <td height="75px" width="100px" style="position: relative; border: 1px solid black; font-weight: bold; font-size: 20px;">
+                <span style="position: absolute; bottom: 0; left: 0; color: red;">{{C.payoff_BD}}</span>
+                <span style="position: absolute; top: 0; right: 0; color: blue;">{{C.payoff_BD}}</span>
+            </td>
+        </tr>
+    </table>
+</div>
+{{ endif }}
 
 <div align="right" style="margin: 50px">
-    <button type="submit" name="AorB">Confirm</button>
+    <button type="submit" name="decision">Confirm</button>
 </div>
 
 

@@ -1,16 +1,13 @@
+{{ block title }}
+Instructions Quiz
+{{ endblock }}
 {{ block content }}
-<title>
-    Instructions Quiz
-</title>
 <div>
     {{ formfield "qrole" }}
     {{ formfield "qrandom" }}
-    <u><p>
-        Please refer to the payoff table on the bottom of this screen to answer these questions.
-    </p></u>
-    {{ formfield "qplayer1payoff" }}
-    {{ formfield "qotherplayerpayoff" }}
-</div>
+    <u><p align="center" style="font-size: 20px">
+    Please refer to the payoff table below to answer the next questions.
+</p></u>
 <div class="form-group required">
     <table align="center">
         <tr>
@@ -45,6 +42,12 @@
             </td>
         </tr>
     </table>
+</div>
+<div style="margin: 25px">
+</div>
+    </p></u>
+    {{ formfield "qplayer1payoff" }}
+    {{ formfield "qotherplayerpayoff" }}
 </div>
 
     {{ next_button }}

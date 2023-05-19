@@ -6,11 +6,11 @@
   <div>
       {{ if player.qrole == True }}
   </div>
-  <p><b>
+  <p style="font-size: 20px"><b>
           You answered "Yes", this is <span style="color: green">CORRECT</span>
   </b></p>
   {{ else }}
-  <p><b>
+  <p style="font-size: 20px"><b>
         You answered "No", this is <span style="color: red">INCORRECT</span>, the role you are assigned at the start of Stage 1 will stay the same for all round in Stage 1
   </b></p>
   {{ endif }}
@@ -22,50 +22,18 @@
   <div>
       {{ if player.qrandom == True }}
   </div>
-  <p><b>
+  <p style="font-size: 20px"><b>
         You answered "Yes", this is <span style="color: green">CORRECT</span>
   </b></p>
   {{ else }}
-  <p><b>
-        You answered "No", this is <span style="color: red">INCORRECT</span>, the role you are assigned at the start of Stage 1 will stay the same for all round in Stage 1
+  <p style="font-size: 20px"><b>
+        You answered "No", this is <span style="color: red">INCORRECT</span>, the role you are assigned at the start of Stage 1 will stay the same for all rounds in Stage 1
   </b></p>
   {{ endif }}
 </div>
-<u><p>
-    Please refer to the payoff table on the bottom of this screen to answer these questions.
+<u><p align="center" style="font-size: 20px">
+    Please refer to the payoff table below to answer the next questions.
 </p></u>
-<div>
-  <p>
-      3) You are assigned the role of Player 1 at the beginning of Stage 1. If you choose A and the Player 2 matched with you chooses D, your payoff in ECUs is ___
-  </p>
-  <div>
-      {{ if player.qplayer1payoff == 0 }}
-  </div>
-  <p><b>
-        You answered {{ player.qplayer1payoff }}, this is <span style="color: green">CORRECT</span>, see cell highlighted in yellow
-  </b></p>
-  {{ else }}
-  <p><b>
-        You answered {{ player.qplayer1payoff }}, this is <span style="color: red">INCORRECT</span>, your payoff would be 0 (see cell highlighted in yellow)
-  </b></p>
-  {{ endif }}
-</div>
-<div>
-  <p>
-      4) You are assigned the role of Player 2 at the beginning of Stage 1. If you choose C and the Player 1 matched with you chooses B, the other person's payoff in ECUs is ___
-  </p>
-  <div>
-      {{ if player.qotherplayerpayoff == 0 }}
-  </div>
-  <p><b>
-        You answered {{ player.qotherplayerpayoff }}, this is <span style="color: green">CORRECT</span>, see cell highlighted in green
-  </b></p>
-  {{ else }}
-  <p><b>
-        You answered {{ player.qotherplayerpayoff }}, this is <span style="color: red">INCORRECT</span>, the other player's payoff would be 0 (see the cell highlighted in green)
-  </b></p>
-  {{ endif }}
-</div>
 <div class="form-group required">
     <table align="center">
         <tr>
@@ -101,6 +69,41 @@
         </tr>
     </table>
 </div>
+<div style="margin: 25px">
+</div>
+<div>
+  <p>
+      3) You are assigned the role of Player 1 at the beginning of Stage 1. If you choose A and the Player 2 matched with you chooses D, your payoff in ECUs is ___
+  </p>
+  <div>
+      {{ if player.qplayer1payoff == 0 }}
+  </div>
+  <p style="font-size: 20px"><b>
+        You answered {{ player.qplayer1payoff }}, this is <span style="color: green">CORRECT</span>, see cell highlighted in yellow
+  </b></p>
+  {{ else }}
+  <p style="font-size: 20px"><b>
+        You answered {{ player.qplayer1payoff }}, this is <span style="color: red">INCORRECT</span>, your payoff would be 0 (see cell highlighted in yellow)
+  </b></p>
+  {{ endif }}
+</div>
+<div>
+  <p>
+      4) You are assigned the role of Player 2 at the beginning of Stage 1. If you choose C and the Player 1 matched with you chooses B, the other person's payoff in ECUs is ___
+  </p>
+  <div>
+      {{ if player.qotherplayerpayoff == 0 }}
+  </div>
+  <p style="font-size: 20px"><b>
+        You answered {{ player.qotherplayerpayoff }}, this is <span style="color: green">CORRECT</span>, see cell highlighted in green
+  </b></p>
+  {{ else }}
+  <p style="font-size: 20px"><b>
+        You answered {{ player.qotherplayerpayoff }}, this is <span style="color: red">INCORRECT</span>, the other player's payoff would be 0 (see the cell highlighted in green)
+  </b></p>
+  {{ endif }}
+</div>
+
     {{ next_button }}
 
 {{ endblock }}
