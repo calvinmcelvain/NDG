@@ -1,17 +1,15 @@
 {{ block title }}
-
 <header style="font-size: 21px;">Stage 1: Round {{ player.round_number }}</header>
 {{ if player.role == C.Player1_ROLE }}
 <p style="font-size: 30px;" align="left"> You are <span style="color: red"> {{ player.role }} </span></p>
 {{ else }}
 <p style="font-size: 30px;" align="left"> You are <span style="color: blue"> {{ player.role }} </span></p>
 {{ endif }}
-
 {{ endblock }}
-
 
 {{ block content }}
 
+<!--Timer (Displayed in last 10 seconds)-->
 <style>
     .otree-timer {
         display: none;
@@ -28,7 +26,7 @@
 </script>
 
 {{ if player.role == C.Player1_ROLE }}
-
+<!--Conditional Highlighting for radio inputs & confirmation button-->
 <head>
     <style>
         .highlight {
@@ -56,6 +54,8 @@
         }
     </script>
 </head>
+
+<!---Decision Tables for Player 1--->
 <body>
     <div align="center" style="display: flex;">
             <div style="display: flex; align-items: end;">
@@ -101,6 +101,7 @@
 
 {{ else }}
 
+<!--Conditional Highlighting for radio inputs & confirmation button-->
 <head>
     <style>
         .highlight {
@@ -133,6 +134,8 @@
         }
     </script>
 </head>
+
+<!---Decision Tables for Player 2--->
 <body>
     <div align="center" style="display: flex;">
             <div style="display: flex; align-items: end;">
@@ -175,14 +178,12 @@
         </div>
     </div>
 </body>
-
 {{ endif }}
 
+<!--Next Button-->
 <div align="center" style="margin: 100px">
     <button type="submit" id="confirmButton" name="decision">Confirm</button>
 </div>
-
-
 
 {{ endblock }}
 

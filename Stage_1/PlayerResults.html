@@ -1,20 +1,16 @@
 {{ block title }}
-
 <header style="font-size: 21px;">Stage 1: End of Round {{ player.round_number }}</header>
-
 {{ if player.role == C.Player1_ROLE }}
 <p style="font-size: 30px;" align="left"> You are <span style="color: red"> {{ player.role }} </span></p>
 {{ else }}
 <p style="font-size: 30px;" align="left"> You are <span style="color: blue"> {{ player.role }} </span></p>
 {{ endif }}
-
 {{ endblock }}
-
 
 {{ block content }}
 
+<!--Results Table for Player 1-->
 {{ if player.role == C.Player1_ROLE }}
-
 <body>
     <div align="center" style="display: flex;">
             <div style="display: flex; align-items: end;">
@@ -58,8 +54,8 @@
     </div>
 </body>
 
+<!--Results Table for Player 2-->
 {{ else }}
-
 <body>
     <div align="center" style="display: flex;">
             <div style="display: flex; align-items: end;">
@@ -102,39 +98,37 @@
         </div>
     </div>
 </body>
-
 {{ endif }}
 
-<div style="margin: 125px">
-</div>
-<div>
-    <table align="center" border="1px solid black" width="1000px">
-        <tr style="border: 1px solid black;">
-            <th style="border: 1px solid black" align="center">Stage</th>
-            <th style="border: 1px solid black" align="center">Round</th>
-            <th style="border: 1px solid black" align="center">Your Choice</th>
-            <th style="border: 1px solid black" align="center">Other's Choice</th>
-            <th style="border: 1px solid black" align="center">Your Payoff</th>
-            <th style="border: 1px solid black" align="center">Other's Payoff</th>
-            <th style="border: 1px solid black" align="center">Your Accumulated Payoff</th>
-        </tr>
-        {{ for p in history }}
-        <tr style="border: 1px solid black;">
-            <td align="center"> {{ p.Stage }} </td>
-            <td align="center"> {{ p.round_number }} </td>
-            <td align="center"> {{ p.decision }} </td>
-            <td align="center"> {{ p.other.decision }} </td>
-            <td align="center"> {{ p.payoff }} </td>
-            <td align="center"> {{ p.other.payoff }} </td>
-            <td align="center"> {{ p.total_payoff }} </td>
-        </tr>
-        {{ endfor }}
-    </table>
-</div>
-<div style="margin: 50px">
-</div>
+<!--Player History Table-->
+<div style="margin: 125px"></div>
+<table align="center" border="1px solid black" width="1000px">
+    <tr style="border: 1px solid black;">
+        <th style="border: 1px solid black" align="center">Stage</th>
+        <th style="border: 1px solid black" align="center">Round</th>
+        <th style="border: 1px solid black" align="center">Your Choice</th>
+        <th style="border: 1px solid black" align="center">Other's Choice</th>
+        <th style="border: 1px solid black" align="center">Your Payoff</th>
+        <th style="border: 1px solid black" align="center">Other's Payoff</th>
+        <th style="border: 1px solid black" align="center">Your Accumulated Payoff</th>
+    </tr>
+    {{ for p in history }}
+    <tr style="border: 1px solid black;">
+        <td align="center"> {{ p.Stage }} </td>
+        <td align="center"> {{ p.round_number }} </td>
+        <td align="center"> {{ p.decision }} </td>
+        <td align="center"> {{ p.other.decision }} </td>
+        <td align="center"> {{ p.payoff }} </td>
+        <td align="center"> {{ p.other.payoff }} </td>
+        <td align="center"> {{ p.total_payoff }} </td>
+    </tr>
+    {{ endfor }}
+</table>
+<div style="margin: 50px"></div>
+
+<!--Next Button-->
 <div align="right" style="margin: 25px">
-    {{ next_button }}
+    <button type="submit">Continue</button>
 </div>
 
 {{ endblock }}

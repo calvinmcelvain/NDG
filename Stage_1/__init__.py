@@ -2,19 +2,22 @@ from otree.api import *
 
 
 doc = """
-Your app description
+NDG Stage 1 App
 """
 
 
 class C(BaseConstants):
     NAME_IN_URL = 'Stage_1'
     PLAYERS_PER_GROUP = 2
-    NUM_ROUNDS = 10
+    NUM_ROUNDS = 2
+    usd_to_ecu = 500
+
     # Payoffs
     payoff_AC = 200
     payoff_BD = 100
     payoff_low = 0
     payoff_high = 300
+    showup_fee = 5.00
     # Roles
     Player1_ROLE = 'Player 1'
     Player2_ROLE = 'Player 2'
@@ -47,6 +50,7 @@ class Player(BasePlayer):
         return total_payoff
     def Stage(self):
         return 1
+
 # PAGES
 class Instructions(Page):
     def is_displayed(player: Player):
@@ -94,9 +98,6 @@ class PlayerResults(Page):
 class Stage1End(Page):
     def is_displayed(player: Player):
         return Player.round_number == C.NUM_ROUNDS
-    @staticmethod
-    def vars_for_template(player: Player):
-        return player.in_all_rounds()
 
 
 page_sequence = [Instructions, InstructionsQuiz, QuizResults, Decision_Players, ResultsWaitPage, PlayerResults, Stage1End]
