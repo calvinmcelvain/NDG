@@ -1,96 +1,110 @@
 {{ block title }}
 
 <header style="font-size: 21px;">Stage 1: End of Round {{ player.round_number }}</header>
+
 {{ if player.role == C.Player1_ROLE }}
-<p style="font-size: 30px;" align="center"> You are <span style="color: red"> {{ player.role }} </span></p>
+<p style="font-size: 30px;" align="left"> You are <span style="color: red"> {{ player.role }} </span></p>
 {{ else }}
-<p style="font-size: 30px;" align="center"> You are <span style="color: blue"> {{ player.role }} </span></p>
+<p style="font-size: 30px;" align="left"> You are <span style="color: blue"> {{ player.role }} </span></p>
 {{ endif }}
 
 {{ endblock }}
 
+
 {{ block content }}
+
 {{ if player.role == C.Player1_ROLE }}
-<div class="form-group required">
-    <table align="center">
-        <tr>
-            <td colspan="3" ></td>
-            <th colspan="2" height="60px" style="text-align: center;"><u>Feedback</u></th>
-        </tr>
-        <tr>
-            <th colspan="3" rowspan="2" style="border: 0;"></th>
-            <th colspan="2" height="50px" style="color: blue; border: 0; text-align: center; font-size: 16px;">Player 2</th>
-        </tr>
-        <tr>
-            <th width="50px" style="border: 0; text-align: center; vertical-align: middle;">C</th>
-            <th width="50px" style="border: 0; text-align: center; vertical-align: middle;">D</th>
-        </tr>
-        <tr>
-            <th colspan="2" rowspan="2" width="100px" style="border: 0; color: red; text-align: center; vertical-align: middle; font-size: 16px;">Player 1</th>
-            <th width="50px" style="border: 0; text-align: center; vertical-align: middle;">A</th>
-            <td height="75px" width="100px" style="position: relative; border: 1px solid black; font-weight: bold; font-size: 20px; {{ if player.decision == 'A' and player.other.decision == 'C' }} background-color: yellow {{ endif }}">
-                <span style="position: absolute; bottom: 0; left: 0; color: red;">{{C.payoff_AC}}</span>
-                <span style="position: absolute; top: 0; right: 0; color: blue;">{{C.payoff_AC}}</span>
-            </td>
-            <td height="75px" width="100px" style="position: relative; border: 1px solid black; font-weight: bold; font-size: 20px; {{ if player.decision == 'A' and player.other.decision == 'D' }} background-color: yellow {{ endif }}">
-                <span style="position: absolute; bottom: 0; left: 0; color: red;">{{C.payoff_low}}</span>
-                <span style="position: absolute; top: 0; right: 0; color: blue;">{{C.payoff_high}}</span>
-            </td>
-        </tr>
-        <tr>
-            <th width="50px" style="border: 0; text-align: center; vertical-align: middle;">B</th>
-            <td height="75px" width="100px" style="position: relative; border: 1px solid black; font-weight: bold; font-size: 20px; {{ if player.decision == 'B' and player.other.decision == 'C' }} background-color: yellow {{ endif }}">
-                <span style="position: absolute; bottom: 0; left: 0; color: red;">{{C.payoff_high}}</span>
-                <span style="position: absolute; top: 0; right: 0; color: blue;">{{C.payoff_low}}</span>
-            </td>
-            <td height="75px" width="100px" style="position: relative; border: 1px solid black; font-weight: bold; font-size: 20px; {{ if player.decision == 'B' and player.other.decision == 'D' }} background-color: yellow {{ endif }}">
-                <span style="position: absolute; bottom: 0; left: 0; color: red;">{{C.payoff_BD}}</span>
-                <span style="position: absolute; top: 0; right: 0; color: blue;">{{C.payoff_BD}}</span>
-            </td>
-        </tr>
-    </table>
-</div>
+
+<body>
+    <div align="center" style="display: flex;">
+            <div style="display: flex; align-items: end;">
+                <p style="color: red; font-size: 20px; font-weight: bold; margin: 75px; align: middle">Player 1</p>
+            </div>
+        <div>
+            <u>Select an Option</u></th>
+            <div style="margin: 15px" ></div>
+            <p style="color: blue; font-size: 20px; font-weight: bold;">Player 2</p>
+            <div style="margin: 25px" ></div>
+            <table>
+                <tr>
+                    <th></th>
+                    <th style="border: 0; text-align: center; vertical-align: middle; font-size: 18px;">C</th>
+                    <th style="border: 0; text-align: center; vertical-align: middle; font-size: 18px;">D</th>
+                </tr>
+                <tr>
+                    <th width="50px" style="border: 0; text-align: center; vertical-align: middle; font-size: 18px;">A</th>
+                    <td height="100px" width="200px" style="position: relative; border: 1px solid black; font-weight: bold; font-size: 29px; {{ if player.decision == 'A' and player.other.decision == 'C' }} background-color: yellow {{ endif }}">
+                        <span style="position: absolute; bottom: 0; left: 0; color: red;">{{C.payoff_AC}}</span>
+                        <span style="position: absolute; top: 0; right: 0; color: blue;">{{C.payoff_AC}}</span>
+                    </td>
+                    <td height="100px" width="200px" style="position: relative; border: 1px solid black; font-weight: bold; font-size: 29px; {{ if player.decision == 'A' and player.other.decision == 'D' }} background-color: yellow {{ endif }}">
+                        <span style="position: absolute; bottom: 0; left: 0; color: red;">{{C.payoff_low}}</span>
+                        <span style="position: absolute; top: 0; right: 0; color: blue;">{{C.payoff_high}}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th width="50px" style="border: 0; text-align: center; vertical-align: middle; font-size: 18px;">B</th>
+                    <td height="100px" width="200px" style="position: relative; border: 1px solid black; font-weight: bold; font-size: 29px; {{ if player.decision == 'B' and player.other.decision == 'C' }} background-color: yellow {{ endif }}">
+                        <span style="position: absolute; bottom: 0; left: 0; color: red;">{{C.payoff_high}}</span>
+                        <span style="position: absolute; top: 0; right: 0; color: blue;">{{C.payoff_low}}</span>
+                    </td>
+                    <td height="100px" width="200px" style="position: relative; border: 1px solid black; font-weight: bold; font-size: 29px; {{ if player.decision == 'B' and player.other.decision == 'D' }} background-color: yellow {{ endif }}">
+                        <span style="position: absolute; bottom: 0; left: 0; color: red;">{{C.payoff_BD}}</span>
+                        <span style="position: absolute; top: 0; right: 0; color: blue;">{{C.payoff_BD}}</span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+
 {{ else }}
-<div class="form-group required">
-    <table align="center">
-        <tr>
-            <td colspan="3" ></td>
-            <th colspan="2" height="60px" style="text-align: center;"><u>Feedback</u></th>
-        </tr>
-        <tr>
-            <th colspan="3" rowspan="2" style="border: 0;"></th>
-            <th colspan="2" height="50px" style="color: blue; border: 0; text-align: center; font-size: 16px;">Player 2</th>
-        </tr>
-        <tr>
-            <th width="50px" style="border: 0; text-align: center; vertical-align: middle;">C</th>
-            <th width="50px" style="border: 0; text-align: center; vertical-align: middle;">D</th>
-        </tr>
-        <tr>
-            <th colspan="2" rowspan="2" width="100px" style="border: 0; color: red; text-align: center; vertical-align: middle; font-size: 16px;">Player 1</th>
-            <th width="50px" style="border: 0; text-align: center; vertical-align: middle;">A</th>
-            <td height="75px" width="100px" style="position: relative; border: 1px solid black; font-weight: bold; font-size: 20px; {{ if player.decision == 'C' and player.other.decision == 'A' }} background-color: yellow {{ endif }}">
-                <span style="position: absolute; bottom: 0; left: 0; color: red;">{{C.payoff_AC}}</span>
-                <span style="position: absolute; top: 0; right: 0; color: blue;">{{C.payoff_AC}}</span>
-            </td>
-            <td height="75px" width="100px" style="position: relative; border: 1px solid black; font-weight: bold; font-size: 20px; {{ if player.decision == 'D' and player.other.decision == 'A' }} background-color: yellow {{ endif }}">
-                <span style="position: absolute; bottom: 0; left: 0; color: red;">{{C.payoff_low}}</span>
-                <span style="position: absolute; top: 0; right: 0; color: blue;">{{C.payoff_high}}</span>
-            </td>
-        </tr>
-        <tr>
-            <th width="50px" style="border: 0; text-align: center; vertical-align: middle;">B</th>
-            <td height="75px" width="100px" style="position: relative; border: 1px solid black; font-weight: bold; font-size: 20px; {{ if player.decision == 'C' and player.other.decision == 'B' }} background-color: yellow {{ endif }}">
-                <span style="position: absolute; bottom: 0; left: 0; color: red;">{{C.payoff_high}}</span>
-                <span style="position: absolute; top: 0; right: 0; color: blue;">{{C.payoff_low}}</span>
-            </td>
-            <td height="75px" width="100px" style="position: relative; border: 1px solid black; font-weight: bold; font-size: 20px; {{ if player.decision == 'D' and player.other.decision == 'B' }} background-color: yellow {{ endif }}">
-                <span style="position: absolute; bottom: 0; left: 0; color: red;">{{C.payoff_BD}}</span>
-                <span style="position: absolute; top: 0; right: 0; color: blue;">{{C.payoff_BD}}</span>
-            </td>
-        </tr>
-    </table>
-</div>
+
+<body>
+    <div align="center" style="display: flex;">
+            <div style="display: flex; align-items: end;">
+                <p style="color: red; font-size: 20px; font-weight: bold; margin: 75px; align: middle">Player 1</p>
+            </div>
+        <div>
+            <u>Select an Option</u></th>
+            <div style="margin: 15px" ></div>
+            <p style="color: blue; font-size: 20px; font-weight: bold;">Player 2</p>
+            <div style="margin: 25px" ></div>
+            <table>
+                <tr>
+                    <th></th>
+                    <th style="border: 0; text-align: center; vertical-align: middle; font-size: 18px;">C</th>
+                    <th style="border: 0; text-align: center; vertical-align: middle; font-size: 18px;">D</th>
+                </tr>
+                <tr>
+                    <th width="50px" style="border: 0; text-align: center; vertical-align: middle; font-size: 18px;">A</th>
+                    <td height="100px" width="200px" style="position: relative; border: 1px solid black; font-weight: bold; font-size: 29px; {{ if player.decision == 'C' and player.other.decision == 'A' }} background-color: yellow {{ endif }}">
+                        <span style="position: absolute; bottom: 0; left: 0; color: red;">{{C.payoff_AC}}</span>
+                        <span style="position: absolute; top: 0; right: 0; color: blue;">{{C.payoff_AC}}</span>
+                    </td>
+                    <td height="100px" width="200px" style="position: relative; border: 1px solid black; font-weight: bold; font-size: 29px; {{ if player.decision == 'D' and player.other.decision == 'A' }} background-color: yellow {{ endif }}">
+                        <span style="position: absolute; bottom: 0; left: 0; color: red;">{{C.payoff_low}}</span>
+                        <span style="position: absolute; top: 0; right: 0; color: blue;">{{C.payoff_high}}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th width="50px" style="border: 0; text-align: center; vertical-align: middle; font-size: 18px;">B</th>
+                    <td height="100px" width="200px" style="position: relative; border: 1px solid black; font-weight: bold; font-size: 29px; {{ if player.decision == 'C' and player.other.decision == 'B' }} background-color: yellow {{ endif }}">
+                        <span style="position: absolute; bottom: 0; left: 0; color: red;">{{C.payoff_high}}</span>
+                        <span style="position: absolute; top: 0; right: 0; color: blue;">{{C.payoff_low}}</span>
+                    </td>
+                    <td height="100px" width="200px" style="position: relative; border: 1px solid black; font-weight: bold; font-size: 29px; {{ if player.decision == 'D' and player.other.decision == 'B' }} background-color: yellow {{ endif }}">
+                        <span style="position: absolute; bottom: 0; left: 0; color: red;">{{C.payoff_BD}}</span>
+                        <span style="position: absolute; top: 0; right: 0; color: blue;">{{C.payoff_BD}}</span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+
 {{ endif }}
+
 <div style="margin: 125px">
 </div>
 <div>
@@ -119,7 +133,7 @@
 </div>
 <div style="margin: 50px">
 </div>
-<div align="right">
+<div align="right" style="margin: 25px">
     {{ next_button }}
 </div>
 

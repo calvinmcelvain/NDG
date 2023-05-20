@@ -63,7 +63,6 @@ class QuizResults(Page):
         return player.round_number == 1
 
 class Decision_Players(Page):
-    timeout_seconds = 20
     form_model = 'player'
     form_fields = ['decision']
 
@@ -95,6 +94,9 @@ class PlayerResults(Page):
 class Stage1End(Page):
     def is_displayed(player: Player):
         return Player.round_number == C.NUM_ROUNDS
+    @staticmethod
+    def vars_for_template(player: Player):
+        return player.in_all_rounds()
 
 
-page_sequence = [Instructions, InstructionsQuiz, QuizResults, Decision_Players, ResultsWaitPage, PlayerResults]
+page_sequence = [Instructions, InstructionsQuiz, QuizResults, Decision_Players, ResultsWaitPage, PlayerResults, Stage1End]

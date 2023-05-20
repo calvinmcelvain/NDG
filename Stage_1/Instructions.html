@@ -1,15 +1,17 @@
 {{ block content }}
 <div>
     <div align="left">
-        <h1>
+        <h1 style="font-size: 41">
             Instructions
         </h1>
+        <div style="margin: 30px"></div>
         <h2>
             General Information:
         </h2>
         <p style="font-size: 20px">
             Today you are participating in an experiment in decision-making. The instructions describe how you will interact with the computer system and other participants. To make money you must follow the instructions closely. There are three stages in this experiment, with 16 rounds in each stage. The following instructions describe the initial stage. You will be given additional instructions explaining how the rules will change for the remaining two stages of the experiment.
         </p>
+        <div style="margin: 20px"></div>
         <h2>
             Payoffs in Dollars and Confidentiality:
         </h2>
@@ -19,6 +21,7 @@
         <p style="font-size: 20px">
             All information about your choices and payoffs will be kept confidential. Specifically, at no point in time will we identify the role or choices of any individual to other participants.
         </p>
+        <div style="margin: 20px"></div>
         <h2>
             Rules for the Experiment:
         </h2>
@@ -34,75 +37,63 @@
         <p style="font-size: 20px">
             Participants violating these rules or otherwise behaving in a disruptive fashion will be asked to leave the experiment and will not be paid.
         </p>
+        <div style="margin: 20px"></div>
+        <h2>
+            Roles, Rounds, and Matchings:
+        </h2>
+        <p style="font-size: 20px">
+            At the beginning of Stage 1, you will be assigned a role as either Player 1 or Player 2. You will keep this role for the entire stage.
+        </p>
+        <p style="font-size: 20px">
+            There are 10 rounds in Stage 1. For each round, you will be randomly paired with a person in the other role.  In other words, you will be matched with a DIFFERENT person in each round. In each round, you and the person matched with you will play a game.  Each of you will make a decision, and your payoffs for the round will be determined by this pair of decisions.
+        </p>
+        <p style="font-size: 20px">
+            In each round, you and the person matched with you will choose between two options. Player 1 chooses a row, either A or B, and Player 2 picks a column, either C or D.  You will not know the other person’s choice when you make your decision, and they will not know your choice when they make theirs.
+        </p>
+        <p style="font-size: 20px">
+            The payoff table for Stage 1 is shown to the right. Everyone in today’s session has the same payoff table. Player 1’s payoff is in red in the lower left corner of a cell and the Player 2’s payoff is in blue in the upper right.
+        </p>
+        <table align="center">
+            <tr>
+                <th colspan="3" rowspan="2" style="border: 0;"></th>
+                <th colspan="2" height="50px" style="color: blue; border: 0; text-align: center; font-size: 20px;">Player 2</th>
+            </tr>
+            <tr>
+                <th width="150px" style="border: 0; text-align: center; vertical-align: middle; font-size: 18px;">C</th>
+                <th width="150px" style="border: 0; text-align: center; vertical-align: middle; font-size: 18px;">D</th>
+            </tr>
+            <tr>
+                <th colspan="2" rowspan="2" width="100px" style="border: 0; color: red; text-align: center; vertical-align: middle; font-size: 20px;">Player 1</th>
+                <th width="50px" style="border: 0; text-align: center; vertical-align: middle;font-size: 18px">A</th>
+                <td height="100px" width="150px" style="position: relative; border: 1px solid black; font-weight: bold; font-size: 26px;">
+                    <span style="position: absolute; bottom: 0; left: 0; color: red;">200</span>
+                    <span style="position: absolute; top: 0; right: 0; color: blue;">200</span>
+                </td>
+                <td height="100px" width="150px" style="position: relative; border: 1px solid black; font-weight: bold; font-size: 26px;">
+                    <span style="position: absolute; bottom: 0; left: 0; color: red;">0</span>
+                    <span style="position: absolute; top: 0; right: 0; color: blue;">300</span>
+                </td>
+            </tr>
+            <tr>
+                <th width="50px" style="border: 0; text-align: center; vertical-align: middle; font-size: 18px">B</th>
+                <td height="100px" width="150px" style="position: relative; border: 1px solid black; font-weight: bold; font-size: 26px;">
+                    <span style="position: absolute; bottom: 0; left: 0; color: red;">300</span>
+                    <span style="position: absolute; top: 0; right: 0; color: blue;">0</span>
+                </td>
+                <td height="100px" width="150px" style="position: relative; border: 1px solid black; font-weight: bold; font-size: 26px;">
+                    <span style="position: absolute; bottom: 0; left: 0; color: red;">100</span>
+                    <span style="position: absolute; top: 0; right: 0; color: blue;">100</span>
+                </td>
+            </tr>
+        </table>
     </div>
 </div>
 
-<head>
-    <style>
-        .container {
-            text-align: right;
-        }
-
-        table {
-            margin-left: auto;
-            margin-right: 0;
-        }
-    </style>
-</head>
-<body>
-<div class="container">
-    <h2>
-    Roles, Rounds, and Matchings:
-    </h2>
-    <p style="font-size: 20px">
-        At the beginning of Stage 1, you will be assigned a role as either Player 1 or Player 2. You will keep this role for the entire stage.
-    </p>
-    <p style="font-size: 20px">
-        There are 10 rounds in Stage 1. For each round, you will be randomly paired with a person in the other role.  In other words, you will be matched with a DIFFERENT person in each round. In each round, you and the person matched with you will play a game.  Each of you will make a decision, and your payoffs for the round will be determined by this pair of decisions.
-    </p>
-    <p style="font-size: 20px">
-        In each round, you and the person matched with you will choose between two options. Player 1 chooses a row, either A or B, and Player 2 picks a column, either C or D.  You will not know the other person’s choice when you make your decision, and they will not know your choice when they make theirs.
-    </p>
-    <p style="font-size: 20px">
-        The payoff table for Stage 1 is shown to the right. Everyone in today’s session has the same payoff table. Player 1’s payoff is in red in the lower left corner of a cell and the Player 2’s payoff is in blue in the upper right.
-    </p>
-    <table>
-        <tr>
-            <th colspan="3" rowspan="2" style="border: 0;"></th>
-            <th colspan="2" height="50px" style="color: blue; border: 0; text-align: center; font-size: 16px;">Player 2</th>
-        </tr>
-        <tr>
-            <th width="50px" style="border: 0; text-align: center; vertical-align: middle;">C</th>
-            <th width="50px" style="border: 0; text-align: center; vertical-align: middle;">D</th>
-        </tr>
-        <tr>
-            <th colspan="2" rowspan="2" width="100px" style="border: 0; color: red; text-align: center; vertical-align: middle; font-size: 16px;">Player 1</th>
-            <th width="50px" style="border: 0; text-align: center; vertical-align: middle;">A</th>
-            <td height="75px" width="100px" style="position: relative; border: 1px solid black; font-weight: bold; font-size: 20px;">
-                <span style="position: absolute; bottom: 0; left: 0; color: red;">200</span>
-                <span style="position: absolute; top: 0; right: 0; color: blue;">200</span>
-            </td>
-            <td height="75px" width="100px" style="position: relative; border: 1px solid black; font-weight: bold; font-size: 20px;">
-                <span style="position: absolute; bottom: 0; left: 0; color: red;">0</span>
-                <span style="position: absolute; top: 0; right: 0; color: blue;">300</span>
-            </td>
-        </tr>
-        <tr>
-            <th width="50px" style="border: 0; text-align: center; vertical-align: middle;">B</th>
-            <td height="75px" width="100px" style="position: relative; border: 1px solid black; font-weight: bold; font-size: 20px;">
-                <span style="position: absolute; bottom: 0; left: 0; color: red;">300</span>
-                <span style="position: absolute; top: 0; right: 0; color: blue;">0</span>
-            </td>
-            <td height="75px" width="100px" style="position: relative; border: 1px solid black; font-weight: bold; font-size: 20px;">
-                <span style="position: absolute; bottom: 0; left: 0; color: red;">100</span>
-                <span style="position: absolute; top: 0; right: 0; color: blue;">100</span>
-            </td>
-        </tr>
-    </table>
-</div>
-</body>
-
+<div align="right" style="margin: 25px">
     {{ next_button }}
+</div>
+
+
 {{ endblock }}
 
 
