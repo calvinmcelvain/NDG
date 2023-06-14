@@ -18,6 +18,7 @@ class C(BaseConstants):
     payoff_low = 0
     payoff_high = 300
     showup_fee = 5.00
+
     # Roles
     Player1_ROLE = 'Player 1'
     Player2_ROLE = 'Player 2'
@@ -34,11 +35,8 @@ class Player(BasePlayer):
     # Setting choice field
     decision = models.StringField()
 
-    # Practice Quiz Questions
-    qrole = models.BooleanField(label="1) If I am assigned the role of player 1 at the beginning of Stage 1, I will be a Player 1 for all rounds of Stage 1.", choices=[True, False])
-    qrandom = models.BooleanField(label="2) If I am assigned the role of Player 2 at the beginning of Stage 1, in each round I will be randomly matched with a different person in the role of Player 1.", choices=[True, False])
-    qplayer1payoff = models.IntegerField(label="3) You are assigned the role of Player 1 at the beginning of Stage 1. If you choose A and the Player 2 matched with you chooses D, your payoff in ECUs is ___", min=0, max=300)
-    qotherplayerpayoff = models.IntegerField(label="4) You are assigned the role of Player 2 at the beginning of Stage 1. If you choose C and the Player 1 matched with you chooses B, the other person's payoff in ECUs is ___", min=0, max=300)
+    # Instructions Quiz
+    completedquiz = models.BooleanField(initial=False)
 
     # History
     @property
@@ -57,14 +55,15 @@ class Instructions(Page):
         return player.round_number == 1
 
 class InstructionsQuiz(Page):
-    form_model = 'player'
-    form_fields = ['qrole', 'qrandom', 'qplayer1payoff', 'qotherplayerpayoff']
     def is_displayed(player: Player):
         return player.round_number == 1
 
-class QuizResults(Page):
-    def is_displayed(player: Player):
-        return player.round_number == 1
+    @staticmethod
+    def live_method(player: Player, data):
+        correct_answers = [True, True, 0, 300]
+        player_answers = data['Q1', 'Q2', 'Q3', 'Q4']
+        if correct_answers == player_answers:
+            return player.completedquiz == True
 
 class Decision_Players(Page):
     form_model = 'player'
@@ -100,4 +99,4 @@ class Stage1End(Page):
         return Player.round_number == C.NUM_ROUNDS
 
 
-page_sequence = [Instructions, InstructionsQuiz, QuizResults, Decision_Players, ResultsWaitPage, PlayerResults, Stage1End]
+page_sequence = [Instructions, InstructionsQuiz, Decision_Players, ResultsWaitPage, PlayerResults, Stage1End]

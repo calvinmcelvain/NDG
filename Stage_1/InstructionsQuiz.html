@@ -6,8 +6,13 @@ Instructions Quiz
 
 <!--Instruction Quiz Form Fields-->
 <div>
-    {{ formfield "qrole" }}
-    {{ formfield "qrandom" }}
+    <p>If I am assigned the role of Player 1 at the beginning of Stage 1, I will be a Player 1 for all rounds of Stage 1</p>
+    <p><input name="Q1" type="radio" value="True"> True</p>
+    <p><input name="Q1" type="radio" value="False"> False</p>
+    <div style="margin: 25px"></div>
+    <p>If I am assigned the role of Player 2 at the beginning of Stage 1, in each round I will be randomly matched with a different person in the role of Player 1.</p>
+    <p><input name="Q2" type="radio" value="True"> True</p>
+    <p><input name="Q2" type="radio" value="False"> False</p>
 </div>
 
 <!--Payoff Table-->
@@ -50,13 +55,20 @@ Instructions Quiz
 
 <!--Instruction Quiz Form Fields Cont.-->
 <div style="margin: 25px">
-    {{ formfield "qplayer1payoff" }}
-    {{ formfield "qotherplayerpayoff" }}
+    <p>You are assigned the role of Player 1 at the beginning of Stage 1. If you choose A and the Player 2 matched with you chooses D, your payoff in ECUs is ___</p>
+    <input name="Q3" type="number">
+    <div style="margin: 25px"></div>
+    <p>You are assigned the role of Player 2 at the beginning of Stage 1. If you choose C and the Player 1 matched with you chooses B, the other person’s payoff in ECUs is ___</p>
+    <input name="Q4" type="number">
 </div>
 
 <!--Next Button-->
 <div align="right" style="margin: 25px">
-    <button type="submit">Continue</button>
+    <button type="button" onclick="submission">Continue</button>
 </div>
 
+<!--JavaScript Code for Submission-->
+<script>
+    function submission()
+</script>
 {{ endblock }}
