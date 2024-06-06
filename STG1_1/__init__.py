@@ -1,5 +1,4 @@
 from otree.api import *
-from settings import INSTRUCTIONS_TIME
 
 
 doc = """
@@ -41,9 +40,7 @@ class Player(BasePlayer):
 
 
 # PAGES
-class P1(Page):
-    timeout_seconds = C.instructions_time
-
+class Base(Page):
     @staticmethod
     def live_method(player: Player, data):
         player.group.all_players_ready += 1
@@ -51,60 +48,32 @@ class P1(Page):
         if player.group.all_players_ready == players_in_session:
             player.group.all_players_ready = 0
             return {0: 'all_ready'}
-
-
-class P2(Page):
-    timeout_seconds = C.instructions_time
-
+        
     @staticmethod
-    def live_method(player: Player, data):
-        player.group.all_players_ready += 1
-        players_in_session = len(player.subsession.get_players())
-        if player.group.all_players_ready == players_in_session:
-            player.group.all_players_ready = 0
-            return {0: 'all_ready'}
+    def vars_for_template(player: Player):
+        return {'p1_table': C.p1_payoff, 'p2_table': C.p2_payoff}
+        
 
 
-class P3(Page):
-    timeout_seconds = C.instructions_time
 
-    @staticmethod
-    def live_method(player: Player, data):
-        player.group.all_players_ready += 1
-        players_in_session = len(player.subsession.get_players())
-        if player.group.all_players_ready == players_in_session:
-            player.group.all_players_ready = 0
-            return {0: 'all_ready'}
+class P1(Base):
+    pass
 
 
-class P4(Page):
-    timeout_seconds = C.instructions_time
-
-    @staticmethod
-    def live_method(player: Player, data):
-        player.group.all_players_ready += 1
-        players_in_session = len(player.subsession.get_players())
-        if player.group.all_players_ready == players_in_session:
-            player.group.all_players_ready = 0
-            return {0: 'all_ready'}
+class P2(Base):
+    pass
 
 
-class P5(Page):
-    timeout_seconds = C.instructions_time
+class P3(Base):
+    pass
 
-    @staticmethod
-    def vars_for_template(player):
-        p2_payoff_table = {key: list(value.values()) for key, value in C.p2_payoff.items()}
-        p1_payoff_table = {key: list(value.values()) for key, value in C.p1_payoff.items()}
-        return {'p1_table': p1_payoff_table, 'p2_table': p2_payoff_table}
 
-    @staticmethod
-    def live_method(player: Player, data):
-        player.group.all_players_ready += 1
-        players_in_session = len(player.subsession.get_players())
-        if player.group.all_players_ready == players_in_session:
-            player.group.all_players_ready = 0
-            return {0: 'all_ready'}
+class P4(Base):
+    pass
+
+
+class P5(Base):
+    pass
 
 
 page_sequence = [P1, P2, P3, P4, P5]
