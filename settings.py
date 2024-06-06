@@ -1,5 +1,15 @@
 from os import environ
 
+grouping = 5
+participants = 20
+
+
+# Timeout Seconds
+DECISION_TIME = 20000   # In milliseconds (a javascript timeout)
+FEEDBACK_TIME = None  # In seconds
+INSTRUCTIONS_TIME = None
+
+
 SESSION_CONFIGS = [
         dict(
                 name='stage_1_instructions',

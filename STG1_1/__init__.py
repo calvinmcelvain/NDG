@@ -1,4 +1,5 @@
 from otree.api import *
+from settings import INSTRUCTIONS_TIME
 
 
 doc = """
@@ -7,7 +8,7 @@ Stage 1 Instructions
 
 
 class C(BaseConstants):
-    NAME_IN_URL = 'STG1_BGN'
+    NAME_IN_URL = 'STG1_1'
     PLAYERS_PER_GROUP = None
     NUM_ROUNDS = 1
 
