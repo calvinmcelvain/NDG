@@ -2,15 +2,14 @@ from otree.api import *
 
 
 doc = """
-NDG Stage 1 App
+Stage 1 Game
 """
 
 
 class C(BaseConstants):
-    NAME_IN_URL = 'STG1_GAME'
+    NAME_IN_URL = 'STG1_2'
     PLAYERS_PER_GROUP = 2
     NUM_ROUNDS = 2
-    usd_to_ecu = 500
 
     # Payoff Dictionaries
     p1_payoff = {
@@ -23,8 +22,8 @@ class C(BaseConstants):
     }
 
     # Roles
-    Player1_ROLE = 'Player 1'
-    Player2_ROLE = 'Player 2'
+    player1_ROLE = 'Player 1'
+    player2_ROLE = 'Player 2'
 
 class Subsession(BaseSubsession):
     # Grouping randomly
