@@ -48,11 +48,13 @@ class Base(Page):
         if player.group.all_players_ready == players_in_session:
             player.group.all_players_ready = 0
             return {0: 'all_ready'}
+
         
     @staticmethod
-    def vars_for_template(player: Player):
-        return {'p1_table': C.p1_payoff, 'p2_table': C.p2_payoff}
-        
+    def vars_for_template(player):
+        p2_payoff_table = {key: list(value.values()) for key, value in C.p2_payoff.items()}
+        p1_payoff_table = {key: list(value.values()) for key, value in C.p1_payoff.items()}
+        return {'p1_table': p1_payoff_table, 'p2_table': p2_payoff_table}
 
 
 

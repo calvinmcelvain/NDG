@@ -62,6 +62,7 @@ ol li {
     font-size: 1.1vmax;
 }
 ul li {
+    margin-top: 2vh;
     font-size: 1.1vmax;
 }
 
@@ -94,44 +95,50 @@ span.sample {
 }
 
 /* Payoff Table */
-table.payoff_table {
+table.payoff-table {
     margin: auto;
 }
-.payoff_table th {
-    font-size: 19px;
+.payoff-table th {
+    font-size: 1.1vmax;
     text-align: center;
     border: 0;
 }
-.payoff_table tr.choice_upper th {
-    height: 50px;
-}
-.payoff_table th.player1 {
-    width: 100px;
-    color: red;
-}
-.payoff_table th.player2 {
-    color: blue;
-}
-.payoff_table span.player_1 {
-    color: red;
-    bottom: 0;
-    left: 0;
-    position: absolute;
-}
-.payoff_table span.player_2 {
-    color: blue;
-    top: 0;
-    right: 0;
-    position: absolute;
-}
-.payoff_table th.choice_below {
-    width: 50px;
-}
-.payoff_table td {
-    height: 100px;
-    width: 150px;
+.payoff-table td {
+    height: 10vh;
+    width: 11vw;
     position: relative;
-    border: 1px solid black;
-    font-weight: bold;
-    font-size: 26px;
+    border: 2px solid black;
+    font-size: 1.3vmax;
+}
+.player-1-title {
+    width: 7vw;
+    font-style: italic;
+}
+.player-2-title {
+    height: 5vh;
+    font-style: italic;
+}
+.player-2 {
+    color: red;
+}
+.player-1 {
+    color: blue;
+}
+.choice-left {
+    width: 5vw;
+}
+.choice-top {
+    height: 5vh;
+}
+.player-1-cell {
+    bottom: 0.2vh;
+    left: 0.7vw;
+    font-weight: 500;
+    position: absolute;
+}
+.player-2-cell {
+    top: 0.2vh;
+    right: 0.7vw;
+    font-weight: 500;
+    position: absolute;
 }
