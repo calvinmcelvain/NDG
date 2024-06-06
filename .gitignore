@@ -1,13 +1,11 @@
-venv
-staticfiles
-./db.sqlite3
-.idea
-*~
+# Ignoring oTree databases #
 *.sqlite3
-_static_root
-_bots*s
-__temp*
+*.DS_Store
+
+# Ignoring Pychache
+*.pyc
+*.pyo
 __pycache__/
-*.py[cod]
-.DS_Store
+
+# Other
 *.otreezip
