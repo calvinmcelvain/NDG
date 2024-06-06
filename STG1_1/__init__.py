@@ -78,4 +78,12 @@ class P5(Base):
     pass
 
 
-page_sequence = [P1, P2, P3, P4, P5]
+class P6(Page):
+    @staticmethod
+    def vars_for_template(player):
+        p2_payoff_table = {key: list(value.values()) for key, value in C.p2_payoff.items()}
+        p1_payoff_table = {key: list(value.values()) for key, value in C.p1_payoff.items()}
+        return {'p1_table': p1_payoff_table, 'p2_table': p2_payoff_table}
+
+
+page_sequence = [P1, P2, P3, P4, P5, P6]
