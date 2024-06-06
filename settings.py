@@ -2,8 +2,20 @@ from os import environ
 
 SESSION_CONFIGS = [
         dict(
-                name='STG1_BGN',
-                display_name="Stage 1 Instructions",
+                name='stage_1_instructions',
+                display_name="Stage 1: Instructions",
+                num_demo_participants=2,
+                app_sequence=['STG1_1']
+        ),
+        dict(
+                name='stage_1_game',
+                display_name="Stage 1: Game",
+                num_demo_participants=2,
+                app_sequence=['STG1_2']
+        ),
+        dict(
+                name='stage 1',
+                display_name="Stage 1: Full Demo",
                 num_demo_participants=2,
                 app_sequence=['STG1_BGN']
         ),
