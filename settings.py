@@ -14,10 +14,10 @@ SESSION_CONFIGS = [
                 app_sequence=['STG1_2']
         ),
         dict(
-                name='stage 1',
+                name='stage_1',
                 display_name="Stage 1: Full Demo",
                 num_demo_participants=2,
-                app_sequence=['STG1_BGN']
+                app_sequence=['STG1_1', 'STG1_2']
         ),
 ]
 
