@@ -7,7 +7,6 @@ participants = 20
 # Timeout Seconds
 DECISION_TIME = 20000   # In milliseconds (a javascript timeout)
 FEEDBACK_TIME = None  # In seconds
-INSTRUCTIONS_TIME = None
 
 
 SESSION_CONFIGS = [
@@ -37,7 +36,7 @@ SESSION_CONFIGS = [
 # e.g. self.session.config['participation_fee']
 
 SESSION_CONFIG_DEFAULTS = dict(
-        real_world_currency_per_point=1, participation_fee=0.00, doc=""
+        real_world_currency_per_point=0.002, participation_fee=5.00, doc=""
 )
 
 
