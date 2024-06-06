@@ -1,0 +1,43 @@
+{{ load static }}
+{{ block content }}
+<!--External CSS & js-->
+<link rel="stylesheet" href="{{ static 'stylesheets/stage_1.css' }}" type="text/css">
+<script src="{{ static 'javascript/stage_1.js' }}"></script>
+
+{{ block title }}
+<b><u>Payoffs and Confidentiality:</u></b>
+{{ endblock }}
+
+<!-- Instructions Body -->
+<p>All payoffs during the experiment are denominated in an artificial currency, experimental currency units (ECU). At the end of the experiment, ECU will be converted to cash at the rate of 500 ECU = $1. Upon completion of the experiment, you will be paid your converted earnings plus the $5 show-up fee in cash. The exact amount you receive will be determined during the experiment and will depend on your decisions and the decisions of others. You will be paid privately, and no other participant will be told what you earned for the experiment. You should feel free to make as much money as possible.</p>
+<p>All information about your choices and payoffs will be kept confidential. Specifically, at no point in time will we identify the role or choices of any individual to other participants.</p>
+
+<!--Next Button: Only allows players to continue if all players in session are ready/clicked continue-->
+<div class="button">
+    <div>
+        <p>Please click "Continue"</p>
+        <p style="font-size: 16px;" >*** Page will not continue until everyone has clicked continue ***</p>
+    </div>
+    <button type="button" id="validation" onclick="validating()">Continue</button>
+</div>
+
+<script>
+// Checking if button has been clicked
+window.onload = function () {
+    const IsClicked = sessionStorage.getItem('IsClicked');
+
+    if (IsClicked === 'true') {
+        document.getElementById('validation').disabled = true;
+    }
+}
+
+// Websocket to check if all players are ready
+function liveRecv(data) {
+    if (data === 'all_ready') {
+        sessionStorage.setItem('IsClicked', 'false')
+        document.forms[0].submit();
+    }
+}
+</script>
+
+{{ endblock }}

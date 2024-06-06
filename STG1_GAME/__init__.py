@@ -7,17 +7,20 @@ NDG Stage 1 App
 
 
 class C(BaseConstants):
-    NAME_IN_URL = 'Stage_1'
+    NAME_IN_URL = 'STG1_GAME'
     PLAYERS_PER_GROUP = 2
     NUM_ROUNDS = 2
     usd_to_ecu = 500
 
-    # Payoffs
-    payoff_AC = 200
-    payoff_BD = 100
-    payoff_low = 0
-    payoff_high = 300
-    showup_fee = 5.00
+    # Payoff Dictionaries
+    p1_payoff = {
+        1: {1: 200, 2: 0},
+        2: {1: 300, 2: 100}
+    }
+    p2_payoff = {
+        1: {1: 200, 2: 300},
+        2: {1: 0, 2: 100}
+    }
 
     # Roles
     Player1_ROLE = 'Player 1'

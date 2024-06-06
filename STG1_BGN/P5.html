@@ -1,0 +1,79 @@
+{{ load static }}
+{{ block content }}
+<!--External CSS & js-->
+<link rel="stylesheet" href="{{ static 'stylesheets/stage_1.css' }}" type="text/css">
+<script src="{{ static 'javascript/stage_1.js' }}"></script>
+
+{{ block title }}
+<b><u>Playing a Round:</u></b>
+{{ endblock }}
+
+<!-- Instructions Body -->
+<p>In each round, you and the person matched with you will choose between two options. Player 1 chooses a row, either A or B, and Player 2 picks a column, either C or D.  You will not know the other person’s choice when you make your decision, and they will not know your choice when they make theirs.</p>
+<p>The payoff table for Stage 1 is shown below. Everyone in today’s session has the same payoff table. Player 1’s payoff is in <span style="color: red">red</span> in the lower left corner of a cell and the Player 2’s payoff is in <span style="color: blue">blue</span> in the upper right.</p>
+
+<!-- Payoff Table -->
+<table class="payoff_table">
+    <tr>
+        <th colspan="2"></th>
+        <th class="player2" colspan="2">Player 2</th>
+    </tr>
+    <tr class="choice_upper">
+        <th colspan="2"></th>
+        <th>C</th>
+        <th>D</th>
+    </tr>
+    <tr>
+        <th class="player1" rowspan="3">Player 1</th>
+        <th class="choice_below">A</th>
+        <td>
+            <span class="player_1">{{ p1_table.1.0 }}</span>
+            <span class="player_2">{{ p2_table.1.0 }}</span>
+        </td>
+        <td>
+            <span class="player_1">{{ p1_table.1.1 }}</span>
+            <span class="player_2">{{ p2_table.1.1 }}</span>
+        </td>
+    </tr>
+    <tr>
+        <th class="choice_below">B</th>
+        <td>
+            <span class="player_1">{{ p1_table.2.0 }}</span>
+            <span class="player_2">{{ p2_table.2.0 }}</span>
+        </td>
+        <td>
+            <span class="player_1">{{ p1_table.2.1 }}</span>
+            <span class="player_2">{{ p2_table.2.1 }}</span>
+        </td>
+    </tr>
+</table>
+
+<!--Next Button: Only allows players to continue if all players in session are ready/clicked continue-->
+<div class="button">
+    <div>
+        <p>Please click "Continue"</p>
+        <p style="font-size: 16px;" >*** Page will not continue until everyone has clicked continue ***</p>
+    </div>
+    <button type="button" id="validation" onclick="validating()">Continue</button>
+</div>
+
+<script>
+// Checking if button has been clicked
+window.onload = function () {
+    const IsClicked = sessionStorage.getItem('IsClicked');
+
+    if (IsClicked === 'true') {
+        document.getElementById('validation').disabled = true;
+    }
+}
+
+// Websocket to check if all players are ready
+function liveRecv(data) {
+    if (data === 'all_ready') {
+        sessionStorage.setItem('IsClicked', 'false')
+        document.forms[0].submit();
+    }
+}
+</script>
+
+{{ endblock }}

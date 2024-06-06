@@ -1,0 +1,42 @@
+{{ load static }}
+{{ block content }}
+<!--External CSS & js-->
+<link rel="stylesheet" href="{{ static 'stylesheets/stage_1.css' }}" type="text/css">
+<script src="{{ static 'javascript/stage_1.js' }}"></script>
+
+{{ block title }}
+<b><u>General Information</u></b>
+{{ endblock }}
+
+<!-- Instructions Body -->
+<p>Today you are participating in an experiment in decision-making. The instructions describe how you will interact with the computer system and other participants. To make money you must follow the instructions closely. There are three stages in this experiment, with 16 rounds in each stage. The following instructions describe the initial stage. You will be given additional instructions explaining how the rules will change for the remaining two stages of the experiment.</p>
+
+<!--Next Button: Only allows players to continue if all players in session are ready/clicked continue-->
+<div class="button">
+    <div>
+        <p>Please click "Continue"</p>
+        <p style="font-size: 16px;" >*** Page will not continue until everyone has clicked continue ***</p>
+    </div>
+    <button type="button" id="validation" onclick="validating()">Continue</button>
+</div>
+
+<script>
+// Checking if button has been clicked
+window.onload = function () {
+    const IsClicked = sessionStorage.getItem('IsClicked');
+
+    if (IsClicked === 'true') {
+        document.getElementById('validation').disabled = true;
+    }
+}
+
+// Websocket to check if all players are ready
+function liveRecv(data) {
+    if (data === 'all_ready') {
+        sessionStorage.setItem('IsClicked', 'false')
+        document.forms[0].submit();
+    }
+}
+</script>
+
+{{ endblock }}
