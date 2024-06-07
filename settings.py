@@ -1,6 +1,5 @@
 from os import environ
 
-grouping = 5
 participants = 20
 
 
@@ -13,19 +12,19 @@ SESSION_CONFIGS = [
         dict(
                 name='stage_1_instructions',
                 display_name="Stage 1: Instructions",
-                num_demo_participants=2,
+                num_demo_participants=participants,
                 app_sequence=['STG1_1']
         ),
         dict(
                 name='stage_1_game',
                 display_name="Stage 1: Game",
-                num_demo_participants=2,
+                num_demo_participants=participants,
                 app_sequence=['STG1_2']
         ),
         dict(
                 name='stage_1',
                 display_name="Stage 1: Full Demo",
-                num_demo_participants=2,
+                num_demo_participants=participants,
                 app_sequence=['STG1_1', 'STG1_2']
         ),
 ]
