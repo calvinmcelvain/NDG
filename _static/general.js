@@ -28,17 +28,17 @@
 // Quiz answer validations
   function checkAnswers() {
     var answers = {
-      Q1: document.querySelector('input[name="Q1"]').value.trim(),
-      Q2: document.querySelector('input[name="Q2"]').value.trim(),
-      Q3: document.querySelector('select[name="Q3"]').value.trim(),
-      Q4: document.querySelector('select[name="Q4"]').value.trim(),
+        Q1: document.querySelector('select[name="Q1"]').value.trim(),
+        Q2: document.querySelector('select[name="Q2"]').value.trim(),
+        Q3: document.querySelector('input[name="Q3"]').value.trim(),
+        Q4: document.querySelector('input[name="Q4"]').value.trim()
     };
 
     var correctAnswers = {
-      Q1: 'True',
-      Q2: 'True',
-      Q3: 'False',
-      Q4: 'True',
+        Q1: 'True',
+        Q2: 'True',
+        Q3: '0',
+        Q4: '300'
     };
 
     var correct = true;
@@ -46,27 +46,29 @@
     // Clear previous error messages
     var errorSpans = document.querySelectorAll('[id^="errorQ"]');
     errorSpans.forEach(function (errorSpan) {
-      errorSpan.textContent = '';
-      errorSpan.style.display = 'none';
+        errorSpan.textContent = '';
+        errorSpan.style.display = 'none';
     });
 
     // Check if all answers are correct
     for (var key in answers) {
-      if (answers[key] !== correctAnswers[key]) {
-        showErrorMessage(key);
-        correct = false;
-      }
+        if (answers[key] !== correctAnswers[key]) {
+            showErrorMessage(key);
+            correct = false;
+        }
     }
 
     if (correct) {
-      // Submit the form
-      document.forms[0].submit();
+        // Submit the form
+        document.forms[0].submit();
     }
   }
-
+  
 
   function showErrorMessage(question) {
     var errorSpan = document.getElementById('error' + question);
-    errorSpan.textContent = 'Incorrect';
-    errorSpan.style.display = 'inline';
+    if (errorSpan) {
+        errorSpan.textContent = 'Incorrect';
+        errorSpan.style.display = 'inline';
+    }
   }
