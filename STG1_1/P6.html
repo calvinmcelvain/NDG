@@ -1,84 +1,59 @@
 {{ load static }}
 {{ block content }}
 <!--External CSS & js-->
-<link rel="stylesheet" href="{{ static 'stylesheets/general.css' }}" type="text/css">
-<script src="{{ static 'javascript/general.js' }}"></script>
+{{ include '_static/general.html' }}
 
 {{ block title }}
 Instructions Quiz
 {{ endblock }}
 
-<!--Payoff Table-->
-<table class="payoff-table">
-    <tr>
-        <th colspan="2"></th>
-        <th class="player-2-title player-2" colspan="2">Player 2</th>
-    </tr>
-    <tr>
-        <th colspan="2"></th>
-        <th class="choice-top">C</th>
-        <th class="choice-top">D</th>
-    </tr>
-    <tr>
-        <th class="player-1-title player-1" rowspan="3">Player 1</th>
-        <th class="choice-left">A</th>
-        <td>
-            <span class="player-1-cell player-1">{{ p1_table.1.0 }}</span>
-            <span class="player-2-cell player-2">{{ p2_table.1.0 }}</span>
-        </td>
-        <td>
-            <span class="player-1-cell player-1">{{ p1_table.1.1 }}</span>
-            <span class="player-2-cell player-2">{{ p2_table.1.1 }}</span>
-        </td>
-    </tr>
-    <tr>
-        <th class="choice-left">B</th>
-        <td>
-            <span class="player-1-cell player-1">{{ p1_table.2.0 }}</span>
-            <span class="player-2-cell player-2">{{ p2_table.2.0 }}</span>
-        </td>
-        <td>
-            <span class="player-1-cell player-1">{{ p1_table.2.1 }}</span>
-            <span class="player-2-cell player-2">{{ p2_table.2.1 }}</span>
-        </td>
-    </tr>
-</table>
+<!--Instruction Quiz -->
+<p class="quiz">To make sure that everyone understands the instructions for Stage I, please take a moment to answer the following questions. Once everyone has responded correctly, we will proceed to the first round of Stage 1.</p>
 
+<!--Payoff Table-->
+{{ include '_static/stg1_pt.html' }}
 
 <!--Instruction Quiz Form Fields-->
-<ol class="quiz">
-    <li>If I am assigned the role of Player 1 at the beginning of Stage 1, I will be a Player 1 for all rounds of Stage 1
-        <label>
-            <select name="Q1">
-                <option></option>
-                <option value="True">True</option>
-                <option value="False">False</option>
-            </select>
-        </label>
-        <span id="errorQ1"></span>
-    </li>
-    <div style="margin: 25px"></div>
-    <p>If I am assigned the role of Player 2 at the beginning of Stage 1, in each round I will be randomly matched with a different person in the role of Player 1.</p>
-    <p><input name="Q2" type="radio" value="True"> True</p>
-    <p><input name="Q2" type="radio" value="False"> False</p>
-</ol>
-
-<!--Instruction Quiz Form Fields Cont.-->
-<div style="margin: 25px">
-    <p>You are assigned the role of Player 1 at the beginning of Stage 1. If you choose A and the Player 2 matched with you chooses D, your payoff in ECUs is ___</p>
-    <input name="Q3" type="number">
-    <div style="margin: 25px"></div>
-    <p>You are assigned the role of Player 2 at the beginning of Stage 1. If you choose C and the Player 1 matched with you chooses B, the other person’s payoff in ECUs is ___</p>
-    <input name="Q4" type="number">
+<div class="quiz">
+    <ol>
+        <li> If I am assigned the role of Player 1 at the beginning of Stage 1, I will be a Player 1 for all rounds of Stage 1.
+            <label class="quiz-input-bol">
+                <select name="Q1">
+                    <option></option>
+                    <option value="True">True</option>
+                    <option value="False">False</option>
+                </select>
+            </label>
+            <span id="errorQ1"></span>
+        </li>
+        <li> If I am assigned the role of Player 2 at the beginning of Stage 1, in each round I will be randomly matched with a different person in the role of Player 1.
+            <label class="quiz-input-bol">
+                <select name="Q2">
+                    <option></option>
+                    <option value="True">True</option>
+                    <option value="False">False</option>
+                </select>
+            </label>
+            <span id="errorQ2"></span>
+        </li>
+        <li> You are assigned the role of Player 1 at the beginning of Stage 1. If you choose A and the Player 2 matched with you chooses D, your payoff in ECUs is:
+            <label class="quiz-input-num">
+                <input size="3" name="Q3" type="number">
+            </label>
+            <span id="errorQ3"></span>
+        </li>
+        <li> You are assigned the role of Player 2 at the beginning of Stage 1. If you choose C and the Player 1 matched with you chooses B, the other person’s payoff in ECUs is:
+            <label class="quiz-input-num">
+                <input size="3" name="Q4" type="number">
+            </label>
+            <span id="errorQ4"></span>
+        </li>
+    </ol>
 </div>
 
 <!--Next Button-->
-<div align="right" style="margin: 25px">
-    <button type="button" onclick="submission">Continue</button>
+<div class="button">
+    <button type="button" onclick="checkAnswers()">Continue</button>
 </div>
 
-<!--JavaScript Code for Submission-->
-<script>
-    function submission()
-</script>
 {{ endblock }}
