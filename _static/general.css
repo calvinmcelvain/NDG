@@ -23,8 +23,8 @@ h2.otree-title {
 .dfont {
     font-size: 1.1vmax;
 }
-.nomargin {
-    margin: unset;
+.marginbttm {
+    margin-bottom: 2vh;
 }
 p {
     font-size: 1.1vmax;
@@ -141,4 +141,23 @@ table.payoff-table {
     right: 0.7vw;
     font-weight: 500;
     position: absolute;
+}
+
+/* Instructions Quiz Styling */
+div.quiz {
+    margin: 5vh 0 0 2vw;
+}
+p.quiz {
+    margin-bottom: unset;
+    margin-top: 0;
+}
+.quiz input, select {
+    width: 4em;
+    height: 1.5em;
+    margin-left: 2vw;
+    border: 2px solid black;
+}
+.quiz span {
+    color: red;
+    margin-left: 1vw;
 }

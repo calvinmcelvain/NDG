@@ -1,8 +1,7 @@
 {{ load static }}
 {{ block content }}
 <!--External CSS & js-->
-<link rel="stylesheet" href="{{ static 'stylesheets/general.css' }}" type="text/css">
-<script src="{{ static 'javascript/general.js' }}"></script>
+{{ include '_static/general.html' }}
 
 {{ block title }}
 <b><u>Playing a Round:</u></b>
@@ -12,41 +11,8 @@
 <p>In each round, you and the person matched with you will choose between two options. Player 1 chooses a row, either <i>A</i> or <i>B</i>, and Player 2 picks a column, either <i>C</i> or <i>D</i>.  You will not know the other person’s choice when you make your decision, and they will not know your choice when they make theirs.</p>
 <p>The payoff table for Stage 1 is shown below. Everyone in today’s session has the <i><b>same</b></i> payoff table. Player 1’s payoff is in <span style="color: red">red</span> in the lower left corner of a cell and the Player 2’s payoff is in <span style="color: blue">blue</span> in the upper right.</p>
 
-<!-- Payoff Table -->
-<table class="payoff-table">
-    <tr>
-        <th colspan="2"></th>
-        <th class="player-2-title player-2" colspan="2">Player 2</th>
-    </tr>
-    <tr>
-        <th colspan="2"></th>
-        <th class="choice-top">C</th>
-        <th class="choice-top">D</th>
-    </tr>
-    <tr>
-        <th class="player-1-title player-1" rowspan="3">Player 1</th>
-        <th class="choice-left">A</th>
-        <td>
-            <span class="player-1-cell player-1">{{ p1_table.1.0 }}</span>
-            <span class="player-2-cell player-2">{{ p2_table.1.0 }}</span>
-        </td>
-        <td>
-            <span class="player-1-cell player-1">{{ p1_table.1.1 }}</span>
-            <span class="player-2-cell player-2">{{ p2_table.1.1 }}</span>
-        </td>
-    </tr>
-    <tr>
-        <th class="choice-left">B</th>
-        <td>
-            <span class="player-1-cell player-1">{{ p1_table.2.0 }}</span>
-            <span class="player-2-cell player-2">{{ p2_table.2.0 }}</span>
-        </td>
-        <td>
-            <span class="player-1-cell player-1">{{ p1_table.2.1 }}</span>
-            <span class="player-2-cell player-2">{{ p2_table.2.1 }}</span>
-        </td>
-    </tr>
-</table>
+<!--Payoff Table-->
+{{ include '_static/stg1_pt.html' }}
 
 <!--Next Button: Only allows players to continue if all players in session are ready/clicked continue-->
 <div class="button">

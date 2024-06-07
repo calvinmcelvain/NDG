@@ -1,8 +1,7 @@
 {{ load static }}
 {{ block content }}
 <!--External CSS & js-->
-<link rel="stylesheet" href="{{ static 'stylesheets/general.css' }}" type="text/css">
-<script src="{{ static 'javascript/general.js' }}"></script>
+{{ include '_static/general.html' }}
 
 {{ block title }}
 <b><u>Payoffs and Confidentiality:</u></b>
