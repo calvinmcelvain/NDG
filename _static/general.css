@@ -6,7 +6,7 @@
 /* Otree body */
 @media screen {
     div.otree-body.container {
-        max-width: calc(100vw - 100px);
+        max-width: calc(100vw - 5vw);
     }
 }
 .page-header {
