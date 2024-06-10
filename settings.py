@@ -1,6 +1,6 @@
 from os import environ
 
-participants = 20
+participants = 2
 
 
 # Timeout Seconds
