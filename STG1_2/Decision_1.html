@@ -6,7 +6,7 @@
 <!-- Title -->
 {{ block title }}
 <div class="Title">
-    <h3 style="float: left"><u>Role:</u> {{ player.role }}</h3>
+    <h3 style="float: left">You are <i {{ if player.role == C.p1_ROLE }} class="player-1" {{ else }} class="player-2" {{ endif }}>{{ player.role }}</i></h3>
     <h3 style="float: right">Round {{ player.round_number }}</h3>
 </div>
 {{ endblock }}
@@ -15,6 +15,11 @@
 
 <!---Decision Table for Player 1--->
 <table class="payoff-table">
+    <tr>
+        <th colspan="2"></th>
+        <th colspan="2" class="decision-choice">Please select a choice</th>
+        <th class="left-over"></th>
+    </tr>
     <tr>
         <th colspan="2"></th>
         <th class="player-2-title player-2" colspan="2">Player 2</th>
@@ -26,7 +31,7 @@
     </tr>
     <tr>
         <th class="player-1-title player-1" rowspan="3">Player 1</th>
-        <th class="choice-left"><input name="decision" value="A" type="radio" onclick="highlightRow(this)">A</th>
+        <th class="choice-left"><input name="decision" value="A" type="radio" onclick="highlightRow(this)"> A</th>
         <td>
             <span class="player-1-cell player-1">{{ p1_table.A.0 }}</span>
             <span class="player-2-cell player-2">{{ p2_table.A.0 }}</span>
@@ -37,7 +42,7 @@
         </td>
     </tr>
     <tr>
-        <th class="choice-left"><input name="decision" value="B" type="radio" onclick="highlightRow(this)">B</th>
+        <th class="choice-left"><input name="decision" value="B" type="radio" onclick="highlightRow(this)"> B</th>
         <td>
             <span class="player-1-cell player-1">{{ p1_table.B.0 }}</span>
             <span class="player-2-cell player-2">{{ p2_table.B.0 }}</span>
@@ -54,12 +59,17 @@
 <table class="payoff-table">
     <tr>
         <th colspan="2"></th>
+        <th colspan="2" class="decision-choice">Please select a choice</th>
+        <th class="left-over"></th>
+    </tr>
+    <tr>
+        <th colspan="2"></th>
         <th class="player-2-title player-2" colspan="2">Player 2</th>
     </tr>
     <tr>
         <th colspan="2"></th>
-        <th class="choice-top"><input name="decision" value="C" type="radio" onclick="highlightCol(this)">C</th>
-        <th class="choice-top"><input name="decision" value="D" type="radio" onclick="highlightCol(this)">D</th>
+        <th class="choice-top">C<br><input name="decision" value="C" type="radio" onclick="highlightCol(this)"></th>
+        <th class="choice-top">D<br><input name="decision" value="D" type="radio" onclick="highlightCol(this)"></th>
     </tr>
     <tr>
         <th class="player-1-title player-1" rowspan="3">Player 1</th>

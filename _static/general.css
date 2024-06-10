@@ -133,6 +133,10 @@ table.payoff-table {
     border: 2px solid black;
     font-size: 1.3vmax;
 }
+.payoff-table input {
+    height: 0.6em;
+    width: 0.6em;
+}
 .player-1-title {
     width: 7vw;
     font-style: italic;
@@ -164,6 +168,16 @@ table.payoff-table {
     right: 0.7vw;
     font-weight: 500;
     position: absolute;
+}
+.decision-choice {
+    text-align: center;
+    font-style: italic;
+    text-decoration: underline;
+    font-weight: unset;
+    height: 10vh;
+}
+.left-over {
+    width: 12vh;
 }
 
 /* Instructions Quiz Styling */
