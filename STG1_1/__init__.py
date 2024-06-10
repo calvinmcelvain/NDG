@@ -88,8 +88,8 @@ class P6(Page):
 class P7(Base):
     @staticmethod
     def vars_for_template(player):
-        role = 'Player 1' if player.participant.vars['role'] == 'Player 1' else 'Player 2'
+        role = player.role
         return {'role': role}
 
 
-page_sequence = [P1, P2, P3, P4, P5, P6]
+page_sequence = [P1, P2, P3, P4, P5, P6, P7]

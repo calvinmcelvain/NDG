@@ -87,6 +87,18 @@ div.button {
     font-size: 0.8vmax;
 }
 
+/* Standby Page Styling */
+h2.before-start {
+    text-decoration: unset;
+    text-align: center;
+    margin: 20vh;
+}
+
+/* Simple yellow highlighting */
+.highlight-y {
+    background-color: yellow;
+}
+
 /* Sample Page Header Styling */
 span.sample {
     font-size: 21px;
