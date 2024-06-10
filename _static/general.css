@@ -66,6 +66,11 @@ ul li {
     font-size: 1.1vmax;
 }
 
+/* Decision title */
+div.decision-title {
+    contain: content;
+}
+
 /* Button Styling */
 div.button {
     margin-top: 5vh;
@@ -86,6 +91,10 @@ div.button {
 .button p.bttm-sent {
     font-size: 0.8vmax;
 }
+.button button.instr-btn {
+    float: left;
+    background-color: blue;
+}
 
 /* Standby Page Styling */
 h2.before-start {
@@ -97,6 +106,9 @@ h2.before-start {
 /* Simple yellow highlighting */
 .highlight-y {
     background-color: yellow;
+}
+.highlight-g {
+    background-color: #5BFF33;
 }
 
 /* Sample Page Header Styling */
