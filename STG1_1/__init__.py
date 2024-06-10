@@ -10,11 +10,7 @@ class C(BaseConstants):
     NAME_IN_URL = 'STG1_1'
     PLAYERS_PER_GROUP = None
     NUM_ROUNDS = 1
-
-    # Timeout seconds
-    instructions_time = None
-    quiz_time = None
-
+    
     # Payoff Dictionaries
     p1_payoff = {
         1: {1: 200, 2: 0},
@@ -24,6 +20,9 @@ class C(BaseConstants):
         1: {1: 200, 2: 300},
         2: {1: 0, 2: 100}
     }
+    
+    p1_ROLE = 'Player 1'
+    p2_ROLE = 'Player 2'
 
 
 class Subsession(BaseSubsession):
