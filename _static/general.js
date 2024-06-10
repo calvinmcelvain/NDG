@@ -128,7 +128,7 @@
     }
 
     // Change the button color to red
-    var confirmButton = document.getElementById('confirmButton');
+    var confirmButton = document.getElementById('cont-btn');
     confirmButton.style.backgroundColor = 'red';
   }
 
@@ -136,26 +136,19 @@
 // Decision confirmation pop-up
   function confirmDecision(event) {
     event.preventDefault(); // Prevents the form from submitting by default
-    const decision = document.getElementById("decision");
+    const decision = document.getElementById("decision-choice");
 
-    const decisionChecked = document.querySelector('input[name="pa_low_advice"]:checked');
+    const decisionChecked = document.querySelector('input[name="decision"]:checked');
 
     if (!decisionChecked) {
-        lowError.textContent = "Field must be selected";
-        lowError.style.display = "block";
+        decision.classList.add('decision-red');
     } else {
-        lowError.style.display = "none";
+      var confirmationModal = new bootstrap.Modal(document.getElementById('confirmationModal'));
+      confirmationModal.show();
     }
-
-    // Check if all three are checked before submitting the form
-    if (decisionChecked) {
-        var confirmationModal = new bootstrap.Modal(document.getElementById('confirmationModal'));
-        confirmationModal.show();
-
-        // Handle confirm button click inside the modal
-        document.getElementById("confirmButton").onclick = function () {
-            confirmationModal.hide();
-            document.forms[0].submit();
-        };
-    }
+    // Handle confirm button click inside the modal
+    document.getElementById("confirmButton").onclick = function () {
+        confirmationModal.hide();
+        document.forms[0].submit();
+    };
   }
