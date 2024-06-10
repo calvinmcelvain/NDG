@@ -68,8 +68,8 @@ class Decision_1(Page):
 class PayoffWaitPage(WaitPage):
     # Calculating round payoffs
     def after_all_players_arrive(group: Group):
-        player1 = group.get_player_by_role(C.Player1_ROLE)
-        player2 = group.get_player_by_role(C.Player2_ROLE)
+        player1 = group.get_player_by_role(C.p1_ROLE)
+        player2 = group.get_player_by_role(C.p2_ROLE)
         player1.payoff = C.p1_payoff[player1.decision][player2.decision]
         player2.payoff = C.p2_payoff[player1.decision][player2.decision]
 
@@ -77,7 +77,14 @@ class PayoffWaitPage(WaitPage):
 class Results_2(Page):
     @staticmethod
     def vars_for_template(player: Player):
-        return dict(history=player.in_all_rounds())
+        p2_payoff_table = {key: list(value.values()) for key, value in C.p2_payoff.items()}
+        p1_payoff_table = {key: list(value.values()) for key, value in C.p1_payoff.items()}
+        history = player.in_all_rounds()
+        return {'p1_table': p1_payoff_table, 'p2_table': p2_payoff_table, 'history': history}
+    
+
+class BeforeNextRound(WaitPage):
+    pass
 
 
-page_sequence = [Decision_1, PayoffWaitPage, Results_2]
+page_sequence = [Decision_1, PayoffWaitPage, Results_2, BeforeNextRound]

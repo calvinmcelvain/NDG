@@ -1,0 +1,35 @@
+<table class="payoff-table">
+    <tr>
+        <th colspan="2"></th>
+        <th class="player-2-title player-2" colspan="2">Player 2</th>
+        <th class="left-over"></th>
+    </tr>
+    <tr>
+        <th colspan="2"></th>
+        <th class="choice-top">C</th>
+        <th class="choice-top">D</th>
+    </tr>
+    <tr>
+        <th class="player-1-title player-1" rowspan="3">Player 1</th>
+        <th class="choice-left">A</th>
+        <td>
+            <span class="player-1-cell player-1">{{ p1_table.A.0 }}</span>
+            <span class="player-2-cell player-2">{{ p2_table.A.0 }}</span>
+        </td>
+        <td>
+            <span class="player-1-cell player-1">{{ p1_table.A.1 }}</span>
+            <span class="player-2-cell player-2">{{ p2_table.A.1 }}</span>
+        </td>
+    </tr>
+    <tr>
+        <th class="choice-left">B</th>
+        <td>
+            <span class="player-1-cell player-1">{{ p1_table.B.0 }}</span>
+            <span class="player-2-cell player-2">{{ p2_table.B.0 }}</span>
+        </td>
+        <td>
+            <span class="player-1-cell player-1">{{ p1_table.B.1 }}</span>
+            <span class="player-2-cell player-2">{{ p2_table.B.1 }}</span>
+        </td>
+    </tr>
+</table>

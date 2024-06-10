@@ -90,7 +90,7 @@
     }
 
     // Change the button color to red
-    var confirmButton = document.getElementById('confirmButton');
+    var confirmButton = document.getElementById('cont-btn');
     confirmButton.style.backgroundColor = 'red';
   }
 
