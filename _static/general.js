@@ -103,15 +103,27 @@
         cells[i].classList.remove('highlight-g');
     }
 
-    // Highlight the rows below the clicked radio button in the same column
+    // Get the column index of the clicked radio button
     var cell = element.parentNode;
     var column = cell.cellIndex;
+
+    // Get the table and all its rows
     var table = cell.closest('table');
     var rows = table.querySelectorAll('tr');
+    
+    // Adjust column index for rows affected by rowspan
     for (var j = cell.parentNode.rowIndex + 1; j < rows.length; j++) {
-        var cellsToHighlight = rows[j].querySelectorAll('td:nth-child(' + (column + 1) + ')');
-        for (var k = 0; k < cellsToHighlight.length; k++) {
-            cellsToHighlight[k].classList.add('highlight-g');
+        var cellsToHighlight = rows[j].querySelectorAll('td, th');
+        var offset = 0;
+
+        // Adjust offset if first cell has rowspan
+        if (rows[j].querySelector('th[rowspan]') && rows[j].querySelector('th[rowspan]').rowSpan > 1) {
+            offset = 1;
+        }
+
+        var cellToHighlight = cellsToHighlight[column + offset];
+        if (cellToHighlight) {
+            cellToHighlight.classList.add('highlight-g');
         }
     }
 
@@ -122,7 +134,6 @@
 
 
 // Decision confirmation pop-up
-/// Decision Button
   function confirmDecision(event) {
     event.preventDefault(); // Prevents the form from submitting by default
     const decision = document.getElementById("decision");
