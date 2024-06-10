@@ -57,6 +57,12 @@ def creating_session(subsession):
 class Decision_1(Page):
     form_model = 'player'
     form_fields = ['decision']
+    
+    @staticmethod
+    def vars_for_template(player):
+        p2_payoff_table = {key: list(value.values()) for key, value in C.p2_payoff.items()}
+        p1_payoff_table = {key: list(value.values()) for key, value in C.p1_payoff.items()}
+        return {'p1_table': p1_payoff_table, 'p2_table': p2_payoff_table}
 
 
 class PayoffWaitPage(WaitPage):
