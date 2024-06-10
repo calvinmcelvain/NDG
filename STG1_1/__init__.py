@@ -48,7 +48,6 @@ class Base(Page):
             player.group.all_players_ready = 0
             return {0: 'all_ready'}
 
-        
     @staticmethod
     def vars_for_template(player):
         p2_payoff_table = {key: list(value.values()) for key, value in C.p2_payoff.items()}
