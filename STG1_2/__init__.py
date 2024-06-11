@@ -10,7 +10,7 @@ Stage 1 Game
 class C(BaseConstants):
     NAME_IN_URL = 'STG1_2'
     PLAYERS_PER_GROUP = 2
-    NUM_ROUNDS = 5
+    NUM_ROUNDS = 16
 
     # Payoff Dictionaries
     p1_payoff = {

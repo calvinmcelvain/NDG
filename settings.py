@@ -1,6 +1,6 @@
 from os import environ
 
-participants = 2
+participants = 10
 
 
 # Timeout Seconds
@@ -13,19 +13,22 @@ SESSION_CONFIGS = [
                 name='stage_1_instructions',
                 display_name="Stage 1: Instructions",
                 num_demo_participants=participants,
-                app_sequence=['STG1_1']
+                app_sequence=['STG1_1'],
+                use_browser_bots=True
         ),
         dict(
                 name='stage_1_game',
                 display_name="Stage 1: Game",
                 num_demo_participants=participants,
-                app_sequence=['STG1_2']
+                app_sequence=['STG1_2'],
+                use_browser_bots=True
         ),
         dict(
                 name='stage_1',
                 display_name="Stage 1: Full Demo",
                 num_demo_participants=participants,
-                app_sequence=['STG1_1', 'STG1_2']
+                app_sequence=['STG1_1', 'STG1_2'],
+                use_browser_bots=True
         ),
 ]
 
