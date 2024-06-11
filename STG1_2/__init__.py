@@ -62,7 +62,7 @@ def creating_session(subsession):
     
 
 # PAGES
-class Decision_1(Page):
+class P1_Decision(Page):
     form_model = 'player'
     form_fields = ['decision']
     
@@ -89,7 +89,7 @@ class PayoffWaitPage(WaitPage):
         group.grid = C.grid[player1.decision][player2.decision]
 
 
-class Results_2(Page):
+class P2_Results(Page):
     timeout_seconds = FEEDBACK_TIME
     
     @staticmethod
@@ -119,4 +119,4 @@ class BeforeNextStage(WaitPage):
         return player.round_number == C.NUM_ROUNDS
 
 
-page_sequence = [Decision_1, PayoffWaitPage, Results_2, BeforeNextRound, BeforeNextStage]
+page_sequence = [P1_Decision, PayoffWaitPage, P2_Results, BeforeNextRound, BeforeNextStage]
