@@ -23,6 +23,12 @@ class C(BaseConstants):
         'A': {'C': 200, 'D': 300},
         'B': {'C': 0, 'D': 100}
     }
+    
+    # Highlighting Grid Dictionary
+    grid =  {
+        'A': {'C': 1, 'D': 2},
+        'B': {'C': 3, 'D': 4}
+    }
 
     # Roles
     p1_ROLE = 'Player 1'
@@ -34,7 +40,7 @@ class Subsession(BaseSubsession):
 
 
 class Group(BaseGroup):
-    pass
+    grid = models.FloatField()
 
 
 class Player(BasePlayer):
@@ -42,9 +48,11 @@ class Player(BasePlayer):
     decision = models.StringField()
 
     # History
-    def other(self):
-        return self.get_others_in_group()[0]
+    def other_decision(self):
+        return self.get_others_in_group()[0].decision
     
+    def other_payoff(self):
+        return self.get_others_in_group()[0].payoff
 
     def total_payoff(self):
         total_payoff = sum([p.payoff for p in self.in_all_rounds()])
@@ -65,7 +73,7 @@ class Decision_1(Page):
     def vars_for_template(player):
         p2_payoff_table = {key: list(value.values()) for key, value in C.p2_payoff.items()}
         p1_payoff_table = {key: list(value.values()) for key, value in C.p1_payoff.items()}
-        return {'p1_table': p1_payoff_table, 'p2_table': p2_payoff_table}
+        return {'p1_table': p1_payoff_table, 'p2_table': p2_payoff_table, 'history': reversed(player.in_previous_rounds())}
     
     @staticmethod
     def js_vars(player):
@@ -81,6 +89,7 @@ class PayoffWaitPage(WaitPage):
         player2 = group.get_player_by_role(C.p2_ROLE)
         player1.payoff = C.p1_payoff[player1.decision][player2.decision]
         player2.payoff = C.p2_payoff[player1.decision][player2.decision]
+        group.grid = C.grid[player1.decision][player2.decision]
 
 
 class Results_2(Page):
@@ -88,12 +97,27 @@ class Results_2(Page):
     def vars_for_template(player: Player):
         p2_payoff_table = {key: list(value.values()) for key, value in C.p2_payoff.items()}
         p1_payoff_table = {key: list(value.values()) for key, value in C.p1_payoff.items()}
-        history = player.in_all_rounds()
-        return {'p1_table': p1_payoff_table, 'p2_table': p2_payoff_table, 'history': history}
+        return {'p1_table': p1_payoff_table, 'p2_table': p2_payoff_table, 'history': reversed(player.in_all_rounds())}
     
 
 class BeforeNextRound(WaitPage):
-    pass
+    wait_for_all_groups = True
+    title_text = 'Next Round Will Start Soon'
+    body_text = 'Waiting for other participants'
+
+    @staticmethod
+    def is_displayed(player: Player):
+        return player.round_number != C.NUM_ROUNDS
 
 
-page_sequence = [Decision_1, PayoffWaitPage, Results_2, BeforeNextRound]
+class BeforeNextStage(WaitPage):
+    wait_for_all_groups = True
+    title_text = 'End of Stage 1'
+    body_text = 'Instructions for Stage 2 will begin when all players are ready'
+
+    @staticmethod
+    def is_displayed(player: Player):
+        return player.round_number == C.NUM_ROUNDS
+
+
+page_sequence = [Decision_1, PayoffWaitPage, Results_2, BeforeNextRound, BeforeNextStage]

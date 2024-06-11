@@ -244,3 +244,85 @@ p.quiz {
 .modal-footer > button {
     font-size: 1vmax;
 }
+
+/* Scrollable History Table */
+div.tablescroll {
+    contain: content;
+    margin-top: 4vh;
+    border-bottom: 1px solid black;
+    width: 100%;
+}
+.tablescroll div {
+    text-align: center;
+    width: 100%;
+}
+.tablescroll h4 {
+    font-style: unset;
+    font-weight: bold;
+    position: sticky;
+    border-collapse: collapse;
+}
+.tablescroll table.history_header {
+    border-collapse: collapse;
+    position: sticky;
+    border: unset;
+    top: 0;
+    width: 100%
+}
+div.scroll {
+    width: 100%;
+    contain: content;
+    overflow-y: scroll;
+    border: 1px solid black;
+    max-height: 10vh;
+}
+.tablescroll table {
+    border-top: none;
+    font-size: 1vmax;
+    text-align: center;
+    width: 100%
+}
+.tablescroll th {
+    background-color: #f5f5f5;
+    font-size: 1vmax;
+    border: 1px solid black;
+}
+
+/* Feedback table */
+div.feed-div {
+    contain: content;
+    margin-top: 4vh;
+    margin-bottom: 8vh;
+}
+div.feed {
+    margin-top: 2vh;
+    float: left;
+}
+div.feed-table {
+    float: right;
+}
+.feed h4 {
+    font-style: unset;
+    font-weight: bold;
+    text-align: unset;
+}
+.feed table{
+    font-size: 1vmax;
+}
+.feed th {
+    font-weight: unset;
+    height: 6vh;
+    width: 23vw;
+}
+.feed tr.last th{
+    text-decoration: unset;
+    border-top: 1px solid black;
+    font-weight: bold;
+}
+.last td {
+    border-top: 1px solid black;
+    font-weight: bold;
+}
+.feed td {
+    height: auto;
+}

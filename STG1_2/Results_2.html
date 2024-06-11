@@ -5,23 +5,111 @@
 
 <!-- Title -->
 {{ block title }}
-<div class="Title">
-    <h3 style="float: left">You are <i {{ if player.role == C.p1_ROLE }} class="player-1" {{ else }} class="player-2" {{ endif }}>{{ player.role }}</i></h3>
+<div class="decision-title">
+    <h3 style="float: left">Feedback</h3>
     <h3 style="float: right">End of round {{ player.round_number }}</h3>
 </div>
 {{ endblock }}
 
 
-{{ if player.role == C.p1_ROLE }}
+<div class="feed-div">
+    <div class="feed">
+        <h4>End of Round {{ player.round_number }} Results:</h4>
+        <div>
+            <table>
+                <tr>
+                    <th>Your Role</th>
+                    <td>{{ player.role }}</td>
+                </tr>
+                <tr>
+                    <th>Your Decision:</th>
+                    <td>{{ player.decision }}</td>
+                </tr>
+                <tr>
+                    <th>Other's Decision:</th>
+                    <td>{{ player.other_decision() }}</td>
+                </tr>
+                <tr>
+                    <th>Other's Payoff:</th>
+                    <td>{{ player.other_payoff() }}</td>
+                </tr>
+                </tr>
+                <tr class="last">
+                    <th>Your Payoff:</th>
+                    <td>{{ player.payoff }}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="feed-table">
+        <table class="payoff-table">
+            <tr>
+                <th colspan="2"></th>
+                <th class="player-2-title player-2" colspan="2">Player 2</th>
+                <th class="left-over"></th>
+            </tr>
+            <tr>
+                <th colspan="2"></th>
+                <th class="choice-top">C</th>
+                <th class="choice-top">D</th>
+            </tr>
+            <tr>
+                <th class="player-1-title player-1" rowspan="3">Player 1</th>
+                <th class="choice-left">A</th>
+                <td {{ if player.group.grid == 1 }}class="highlight-y"{{ endif }}>
+                    <span class="player-1-cell player-1">{{ p1_table.A.0 }}</span>
+                    <span class="player-2-cell player-2">{{ p2_table.A.0 }}</span>
+                </td>
+                <td {{ if player.group.grid == 2 }}class="highlight-y"{{ endif }}>
+                    <span class="player-1-cell player-1">{{ p1_table.A.1 }}</span>
+                    <span class="player-2-cell player-2">{{ p2_table.A.1 }}</span>
+                </td>
+            </tr>
+            <tr>
+                <th class="choice-left">B</th>
+                <td {{ if player.group.grid == 3 }}class="highlight-y"{{ endif }}>
+                    <span class="player-1-cell player-1">{{ p1_table.B.0 }}</span>
+                    <span class="player-2-cell player-2">{{ p2_table.B.0 }}</span>
+                </td>
+                <td {{ if player.group.grid == 4 }}class="highlight-y"{{ endif }}>
+                    <span class="player-1-cell player-1">{{ p1_table.B.1 }}</span>
+                    <span class="player-2-cell player-2">{{ p2_table.B.1 }}</span>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
 
-{{ include '_static/tables/stg1_p1_feed.html' }}
-
-{{ else }}
-
-{{ include '_static/tables/stg1_p2_feed.html' }}
-
-{{ endif }}
-
+<div class="tablescroll">
+    <div>
+        <table class="history_header">
+            <tr>
+                <th>Stage</th>
+                <th>Round</th>
+                <th>Your Decision</th>
+                <th>Other's Decision</th>
+                <th>Your Payoff</th>
+                <th>Other's Payoff</th>
+                <th>Accumulated Payoff</th>
+            </tr>
+        </table>
+        <div class="scroll">
+            <table id="data_table">
+                {{ for p in history }}
+                <tr>
+                    <td>1</td>
+                    <td>{{ p.round_number }}</td>
+                    <td>{{ p.decision }}</td>
+                    <td>{{ p.other_decision }}</td>
+                    <td>{{ p.payoff }}</td>
+                    <td>{{ p.other_payoff }}</td>
+                    <td>{{ p.total_payoff() }}</td>
+                </tr>
+                {{ endfor }}
+            </table>
+        </div>
+    </div>
+</div>
 
 <!--Next Button-->
 <div class="button">

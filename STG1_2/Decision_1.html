@@ -5,7 +5,7 @@
 
 <!-- Title -->
 {{ block title }}
-<div class="Title">
+<div class="decision-title">
     <h3 style="float: left">You are <i {{ if player.role == C.p1_ROLE }} class="player-1" {{ else }} class="player-2" {{ endif }}>{{ player.role }}</i></h3>
     <h3 style="float: right">Round {{ player.round_number }}</h3>
 </div>
@@ -30,6 +30,39 @@
 <!-- Other -->
 {{ include '_static/decisionPopup.html' }}
 {{ include '_static/stg1_instr.html' }}
+
+{{ if player.round_number != 1 }}
+<div class="tablescroll">
+    <div>
+        <table class="history_header">
+            <tr>
+                <th>Stage</th>
+                <th>Round</th>
+                <th>Your Decision</th>
+                <th>Other's Decision</th>
+                <th>Your Payoff</th>
+                <th>Other's Payoff</th>
+                <th>Accumulated Payoff</th>
+            </tr>
+        </table>
+        <div class="scroll">
+            <table id="data_table">
+                {{ for p in history }}
+                <tr>
+                    <td>1</td>
+                    <td>{{ p.round_number }}</td>
+                    <td>{{ p.decision }}</td>
+                    <td>{{ p.other_decision }}</td>
+                    <td>{{ p.payoff }}</td>
+                    <td>{{ p.other_payoff }}</td>
+                    <td>{{ p.total_payoff() }}</td>
+                </tr>
+                {{ endfor }}
+            </table>
+        </div>
+    </div>
+</div>
+{{ endif }}
 
 {{ endblock }}
 
