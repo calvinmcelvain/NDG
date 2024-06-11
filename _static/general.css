@@ -94,6 +94,10 @@ div.button {
 .button button.instr-btn {
     float: left;
 }
+button.dec-btn {
+    float: right;
+    background-color: red;
+}
 
 /* Standby Page Styling */
 h2.before-start {
@@ -212,6 +216,10 @@ p.quiz {
 /* Pop-up modal customization */
 .modal-content {
     width: 22vw;
+}
+.modal-header p {
+    font-weight: bold;
+    margin: unset;
 }
 .modal-content-instr {
     width: 100%;
