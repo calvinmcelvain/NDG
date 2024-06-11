@@ -10,6 +10,9 @@ class C(BaseConstants):
     NAME_IN_URL = 'STG1_2'
     PLAYERS_PER_GROUP = 2
     NUM_ROUNDS = 5
+    
+    # Timeouts
+    decision_time = DECISION_TIME
 
     # Payoff Dictionaries
     p1_payoff = {
@@ -63,6 +66,12 @@ class Decision_1(Page):
         p2_payoff_table = {key: list(value.values()) for key, value in C.p2_payoff.items()}
         p1_payoff_table = {key: list(value.values()) for key, value in C.p1_payoff.items()}
         return {'p1_table': p1_payoff_table, 'p2_table': p2_payoff_table}
+    
+    @staticmethod
+    def js_vars(player):
+        return dict(
+            timeout=C.decision_time,
+        )
 
 
 class PayoffWaitPage(WaitPage):

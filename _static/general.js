@@ -152,3 +152,12 @@
         document.forms[0].submit();
     };
   }
+
+
+// Timeout
+  document.addEventListener("DOMContentLoaded", function () {
+    const decision = document.getElementById("decision-choice");
+    setTimeout(function () {
+      decision.classList.add('decision-red');
+    }, js_vars.timeout);
+  });

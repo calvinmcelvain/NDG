@@ -177,7 +177,7 @@ table.payoff-table {
     height: 10vh;
 }
 .decision-red {
-    animation: flashRed 2s  ease-in-out 3;
+    animation: flashRed 2s  infinite;
 }
 .left-over {
     width: 12vh;
@@ -207,10 +207,6 @@ p.quiz {
     0% { color: red; }
     50% { color: #fff; }
     100% { color: red; }
-}
-td.flashing-red {
-    animation: flashRed 2s infinite; /* Adjust the duration as needed */
-    font-size: 1vmax;
 }
 
 /* Pop-up modal customization */
