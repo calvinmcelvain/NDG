@@ -161,10 +161,29 @@
   }
 
 
-// Timeout
+// Timer
   document.addEventListener("DOMContentLoaded", function () {
-    const decision = document.getElementById("decision-choice");
-    setTimeout(function () {
-      decision.classList.add('decision-red');
-    }, js_vars.timeout);
+    // Set the end time as 20 seconds from now
+    var endTime = new Date().getTime() + js_vars.timeout;
+
+    var x = setInterval(function() {
+        var now = new Date().getTime();
+        var distance = endTime - now; // Calculate the remaining time
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      
+        document.getElementById("time").innerHTML = seconds;
+
+        // Reference the decision element outside the if condition
+        const decision = document.getElementById("decision-choice");
+
+        if (seconds < 10) {
+            decision.classList.add('decision-red');
+        }
+
+        // Stop the timer when countdown is finished
+        if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("time").innerHTML = "0";
+        }
+    }, 1000);
   });

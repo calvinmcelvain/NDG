@@ -16,7 +16,7 @@
 /* Otree Title */
 h2.otree-title {
     font-weight: bold;
-    text-decoration: underline;
+    text-decoration: unset;
 }
 
 /* General Styling */
@@ -67,8 +67,24 @@ ul li {
 }
 
 /* Decision title */
-div.decision-title {
-    contain: content;
+.decision-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.decision-title .left {
+    flex: 1;
+    text-align: left;
+    text-decoration: underline;
+}
+.decision-title .center {
+    flex: 1;
+    text-align: center;
+}
+.decision-title .right {
+    flex: 1;
+    text-align: right;
 }
 
 /* Button Styling */
