@@ -102,7 +102,7 @@ class Results_2(Page):
 
 class BeforeNextRound(WaitPage):
     wait_for_all_groups = True
-    title_text = 'Next Round Will Start Soon'
+    title_text = 'Next round will start soon'
     body_text = 'Waiting for other participants'
 
     @staticmethod
