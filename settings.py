@@ -4,8 +4,8 @@ participants = 2
 
 
 # Timeout Seconds
-DECISION_TIME = 20000   # In milliseconds (a javascript timeout)
-FEEDBACK_TIME = None  # In seconds
+DECISION_TIME = 30
+FEEDBACK_TIME = 20
 
 
 SESSION_CONFIGS = [

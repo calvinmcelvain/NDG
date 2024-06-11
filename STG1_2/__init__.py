@@ -1,5 +1,6 @@
 from otree.api import *
 from settings import DECISION_TIME, FEEDBACK_TIME
+import random as r
 
 doc = """
 Stage 1 Game
@@ -65,6 +66,15 @@ def creating_session(subsession):
 class P1_Decision(Page):
     form_model = 'player'
     form_fields = ['decision']
+    timeout_seconds = DECISION_TIME
+    
+    @staticmethod
+    def before_next_page(player, timeout_happened):
+        if timeout_happened:
+            if player.role == C.p1_ROLE:
+                player.decision = r.choice(['A', 'B'])
+            else:
+                player.decision = r.choice(['C', 'D'])
     
     @staticmethod
     def vars_for_template(player):
@@ -75,7 +85,7 @@ class P1_Decision(Page):
     @staticmethod
     def js_vars(player):
         return dict(
-            timeout=DECISION_TIME,
+            timeout=DECISION_TIME * 1000,
         )
 
 
