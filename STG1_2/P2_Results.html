@@ -12,73 +12,42 @@
 {{ endblock }}
 
 
-<div class="feed-div">
-    <div class="feed">
-        <h4>End of Round {{ player.round_number }} Results:</h4>
-        <div>
-            <table>
-                <tr>
-                    <th>Round</th>
-                    <td>{{ player.round_number }}</td>
-                </tr>
-                <tr>
-                    <th>Your Decision:</th>
-                    <td>{{ player.decision }}</td>
-                </tr>
-                <tr>
-                    <th>Other's Decision:</th>
-                    <td>{{ player.other_decision() }}</td>
-                </tr>
-                <tr>
-                    <th>Other's Payoff:</th>
-                    <td>{{ player.other_payoff() }}</td>
-                </tr>
-                </tr>
-                <tr class="last">
-                    <th>Your Payoff:</th>
-                    <td>{{ player.payoff }}</td>
-                </tr>
-            </table>
-        </div>
-    </div>
-    <div class="feed-table">
-        <table class="payoff-table">
-            <tr>
-                <th colspan="2"></th>
-                <th class="player-2-title player-2" colspan="2">Player 2</th>
-                <th class="left-over"></th>
-            </tr>
-            <tr>
-                <th colspan="2"></th>
-                <th class="choice-top">C</th>
-                <th class="choice-top">D</th>
-            </tr>
-            <tr>
-                <th class="player-1-title player-1" rowspan="3">Player 1</th>
-                <th class="choice-left">A</th>
-                <td {{ if player.group.grid == 1 }}class="highlight-y"{{ endif }}>
-                    <span class="player-1-cell player-1">{{ p1_table.A.0 }}</span>
-                    <span class="player-2-cell player-2">{{ p2_table.A.0 }}</span>
-                </td>
-                <td {{ if player.group.grid == 2 }}class="highlight-y"{{ endif }}>
-                    <span class="player-1-cell player-1">{{ p1_table.A.1 }}</span>
-                    <span class="player-2-cell player-2">{{ p2_table.A.1 }}</span>
-                </td>
-            </tr>
-            <tr>
-                <th class="choice-left">B</th>
-                <td {{ if player.group.grid == 3 }}class="highlight-y"{{ endif }}>
-                    <span class="player-1-cell player-1">{{ p1_table.B.0 }}</span>
-                    <span class="player-2-cell player-2">{{ p2_table.B.0 }}</span>
-                </td>
-                <td {{ if player.group.grid == 4 }}class="highlight-y"{{ endif }}>
-                    <span class="player-1-cell player-1">{{ p1_table.B.1 }}</span>
-                    <span class="player-2-cell player-2">{{ p2_table.B.1 }}</span>
-                </td>
-            </tr>
-        </table>
-    </div>
-</div>
+
+<table class="payoff-table">
+    <tr>
+        <th colspan="2"></th>
+        <th class="player-2-title player-2" colspan="2">Player 2</th>
+        <th class="left-over"></th>
+    </tr>
+    <tr>
+        <th colspan="2"></th>
+        <th class="choice-top">C</th>
+        <th class="choice-top">D</th>
+    </tr>
+    <tr>
+        <th class="player-1-title player-1" rowspan="3">Player 1</th>
+        <th class="choice-left">A</th>
+        <td {{ if player.group.grid == 1 }}class="highlight-y"{{ endif }}>
+            <span class="player-1-cell player-1">{{ p1_table.A.0 }}</span>
+            <span class="player-2-cell player-2">{{ p2_table.A.0 }}</span>
+        </td>
+        <td {{ if player.group.grid == 2 }}class="highlight-y"{{ endif }}>
+            <span class="player-1-cell player-1">{{ p1_table.A.1 }}</span>
+            <span class="player-2-cell player-2">{{ p2_table.A.1 }}</span>
+        </td>
+    </tr>
+    <tr>
+        <th class="choice-left">B</th>
+        <td {{ if player.group.grid == 3 }}class="highlight-y"{{ endif }}>
+            <span class="player-1-cell player-1">{{ p1_table.B.0 }}</span>
+            <span class="player-2-cell player-2">{{ p2_table.B.0 }}</span>
+        </td>
+        <td {{ if player.group.grid == 4 }}class="highlight-y"{{ endif }}>
+            <span class="player-1-cell player-1">{{ p1_table.B.1 }}</span>
+            <span class="player-2-cell player-2">{{ p2_table.B.1 }}</span>
+        </td>
+    </tr>
+</table>
 
 <div class="tablescroll">
     <div>
