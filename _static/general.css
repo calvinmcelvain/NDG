@@ -80,10 +80,12 @@ ul li {
 }
 .decision-title .center {
     flex: 1;
+    font-size: 1.1vmax;
     text-align: center;
 }
 .decision-title .right {
     flex: 1;
+    font-size: 1.1vmax;
     text-align: right;
 }
 
