@@ -253,6 +253,8 @@ p.quiz {
 }
 .modal-title {
     font-size: 1.3vmax;
+    font-weight: bold;
+    text-decoration: underline;
 }
 .modal-body {
     font-size: 1.2vmax;

@@ -4,15 +4,11 @@
 {{ include '_static/general.html' }}
 
 {{ block title }}
-<b><u>Roles, Rounds, and Matchings:</u></b>
+Roles, Rounds, and Matchings
 {{ endblock }}
 
 <!-- Instructions Body -->
-<ul>
-    <li>At the beginning of Stage 1, you will be assigned a role as either Player 1 or Player 2. You will keep this role for the entire stage.</li>
-    <li>There are 10 rounds in Stage 1. For each round, you will be randomly paired with a person in the other role.  In other words, you will be matched with a <i><b>different</b></i> person in each round. In each round, you and the person matched with you will play a game.  Each of you will make a decision, and your payoffs for the round will be determined by this pair of decisions.</li>
-    <li>In each round, you and the person matched with you will choose between two options. Player 1 chooses a row, either <i>A</i> or <i>B</i>, and Player 2 picks a column, either <i>C</i> or <i>D</i>.  You will not know the other person’s choice when you make your decision, and they will not know your choice when they make theirs.The payoff table for Stage 1 is shown to the right. Everyone in today’s session has the same payoff table. Player 1’s payoff is in red in the lower left corner of a cell and the Player 2’s payoff is in blue in the upper right.</li>
-</ul>
+{{ include '_static/instructions/stg1/P4.html' }}
 
 <!--Next Button: Only allows players to continue if all players in session are ready/clicked continue-->
 <div class="button">
