@@ -4,7 +4,7 @@ participants = 2
 
 
 # Timeout Seconds
-DECISION_TIME = 30
+DECISION_TIME = 31
 FEEDBACK_TIME = 20
 
 
